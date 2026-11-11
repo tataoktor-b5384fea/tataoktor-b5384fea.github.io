@@ -1,0 +1,1547 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>www.heliao88.com - 汉语方言与少数民族语料聚合</title>
+<meta name="description" content="www.heliao88.com 汇聚汉语方言录音、少数民族语言词表、口述史访谈与语音田野笔记，按语区、语族和采集年份整理，适合语言研究者、方言爱好者和田野录音志愿者查阅。">
+<meta name="keywords" content="www.heliao88.com">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d3b3a'/%3E%3Cpath d='M14 44V20h8l6 12 6-12h8v24h-6V30l-6 12h-4l-6-12v14z' fill='%23e8d9b5'/%3E%3Ccircle cx='48' cy='24' r='5' fill='%23c96f4a'/%3E%3C/svg%3E">
+<style>
+:root{
+--ink:#1b2422;
+--ink-2:#41504c;
+--ink-3:#6d7c78;
+--bg:#f5f2ea;
+--panel:#ffffff;
+--panel-2:#efeade;
+--line:#dbd4c4;
+--main:#1d3b3a;
+--main-l:#2f5a56;
+--main-xl:#e2ebe7;
+--accent:#c96f4a;
+--accent-l:#f3e1d7;
+--r-card:14px;
+--r-btn:9px;
+--r-tag:6px;
+--r-banner:18px;
+--sh:0 2px 10px rgba(27,36,34,.07);
+--sh-h:0 8px 22px rgba(27,36,34,.14);
+--head-h:118px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+margin:0;
+font-family:"Noto Serif SC","Songti SC",Georgia,"Microsoft YaHei",serif;
+background:var(--bg);
+color:var(--ink);
+font-size:16px;
+line-height:1.78;
+-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--main-l);text-decoration:none}
+a:hover{color:var(--accent)}
+h1,h2,h3,h4{line-height:1.35;margin:0}
+button{font-family:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--main);color:#fff;padding:10px 16px;z-index:999}
+.skip:focus{left:8px;top:8px}
+
+/* ===== 吸顶区 ===== */
+.sticky-top{position:sticky;top:0;z-index:80}
+.notice{
+background:var(--main);color:#eae3d2;font-size:13.5px;
+display:flex;align-items:center;gap:18px;
+padding:8px 20px;flex-wrap:wrap;
+}
+.notice .nbrand{font-weight:700;color:#fff;letter-spacing:.5px}
+.notice .nsep{width:1px;height:14px;background:rgba(255,255,255,.28)}
+.notice ul{list-style:none;display:flex;gap:22px;margin:0;padding:0;flex-wrap:wrap}
+.notice li{display:flex;gap:8px;align-items:baseline}
+.notice b{color:#f0c9a8;font-weight:600;font-variant-numeric:tabular-nums}
+.notice a{color:#eae3d2;border-bottom:1px dotted rgba(234,227,210,.4)}
+.notice a:hover{color:#fff;border-bottom-color:#fff}
+
+.site-head{
+background:rgba(245,242,234,.93);
+backdrop-filter:blur(9px);
+border-bottom:1px solid var(--line);
+}
+.head-in{
+max-width:1360px;margin:0 auto;padding:12px 22px;
+display:flex;align-items:center;gap:26px;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:11px;flex-shrink:0}
+.brand svg{width:40px;height:40px;flex-shrink:0}
+.brand-txt{display:flex;flex-direction:column;line-height:1.2}
+.brand-txt strong{font-size:18px;letter-spacing:.3px;color:var(--main);font-family:"Noto Serif SC",serif}
+.brand-txt span{font-size:11.5px;color:var(--ink-3);letter-spacing:1.6px}
+.head-nav{display:flex;gap:4px;flex-wrap:wrap;flex:1;min-width:0}
+.head-nav a{
+font-size:14.5px;padding:7px 11px;border-radius:var(--r-btn);
+color:var(--ink-2);white-space:nowrap;
+}
+.head-nav a:hover{background:var(--main-xl);color:var(--main)}
+.head-tools{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.search-box{display:flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:var(--r-btn);overflow:hidden}
+.search-box input{
+border:0;padding:8px 11px;font-size:14px;width:170px;background:transparent;color:var(--ink);font-family:inherit;
+}
+.search-box input::placeholder{color:var(--ink-3)}
+.search-box button{
+border:0;background:var(--main);color:#f0ead9;padding:8px 13px;font-size:13.5px;cursor:pointer;border-radius:0;
+}
+.search-box button:hover{background:var(--main-l)}
+.burger{display:none;border:1px solid var(--line);background:#fff;border-radius:var(--r-btn);width:42px;height:38px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:4px}
+.burger span{display:block;width:18px;height:2px;background:var(--main);border-radius:2px}
+
+/* ===== 首屏 ===== */
+.hero{
+position:relative;overflow:hidden;
+background:
+radial-gradient(1100px 420px at 82% -10%, #dfe9e4 0%, transparent 62%),
+radial-gradient(700px 380px at 8% 108%, #f4e3d6 0%, transparent 60%),
+linear-gradient(160deg,#f7f4ec 0%,#eee9dc 100%);
+border-bottom:1px solid var(--line);
+}
+.hero-in{
+max-width:1360px;margin:0 auto;padding:52px 22px 46px;
+display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:44px;align-items:center;
+}
+.hero-kicker{
+display:inline-flex;align-items:center;gap:9px;font-size:13px;letter-spacing:2px;
+color:var(--main-l);border:1px solid #bccdc6;background:rgba(255,255,255,.6);
+padding:5px 13px;border-radius:99px;margin-bottom:18px;
+}
+.hero-kicker i{width:6px;height:6px;border-radius:50%;background:var(--accent);display:block}
+.hero h1{
+font-size:clamp(30px,4.2vw,52px);
+letter-spacing:.5px;color:var(--main);font-weight:800;word-break:break-word;
+}
+.hero-desc{margin:18px 0 0;font-size:16.5px;color:var(--ink-2);max-width:37em}
+.hero-actions{display:flex;gap:11px;margin-top:26px;flex-wrap:wrap}
+.btn{
+display:inline-flex;align-items:center;gap:7px;padding:10px 19px;border-radius:var(--r-btn);
+font-size:14.5px;border:1px solid transparent;cursor:pointer;transition:.18s;
+}
+.btn-main{background:var(--main);color:#f4efe0}
+.btn-main:hover{background:var(--main-l);color:#fff;transform:translateY(-2px);box-shadow:var(--sh-h)}
+.btn-ghost{background:#fff;border-color:var(--line);color:var(--main)}
+.btn-ghost:hover{border-color:var(--main-l);transform:translateY(-2px);box-shadow:var(--sh)}
+.hero-stats{display:flex;gap:26px;margin-top:32px;flex-wrap:wrap}
+.hero-stats div{display:flex;flex-direction:column}
+.hero-stats b{font-size:24px;color:var(--main);font-variant-numeric:tabular-nums;line-height:1.2}
+.hero-stats span{font-size:12.5px;color:var(--ink-3);letter-spacing:.6px}
+
+.hero-art{position:relative;min-height:330px}
+.wave-card{
+position:absolute;background:#fff;border:1px solid var(--line);border-radius:var(--r-card);
+box-shadow:var(--sh);padding:14px 16px;
+}
+.wc-1{inset:0 26px 62px 0;animation:float1 9s ease-in-out infinite}
+.wc-2{right:0;bottom:0;width:62%;background:#fdfaf1;animation:float2 11s ease-in-out infinite}
+.wc-1 h4{font-size:13px;color:var(--ink-3);font-weight:600;letter-spacing:1.4px;margin-bottom:8px}
+.wc-1 .wave{width:100%;height:96px}
+.wc-1 .meta{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-3);margin-top:8px;font-variant-numeric:tabular-nums}
+.wc-2 h4{font-size:12px;color:var(--ink-3);letter-spacing:1.3px;margin-bottom:9px;font-weight:600}
+.tone-row{display:flex;gap:5px;align-items:flex-end;height:44px;margin-bottom:9px}
+.tone-row i{display:block;width:12px;background:linear-gradient(180deg,var(--main-l),#9db8b1);border-radius:2px 2px 0 0}
+.tone-row i:nth-child(2n){background:linear-gradient(180deg,var(--accent),#e0a687)}
+.wc-2 p{margin:0;font-size:12.5px;color:var(--ink-2);line-height:1.6}
+@keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ===== 布局骨架 ===== */
+.layout{
+max-width:1360px;margin:0 auto;padding:38px 22px 20px;
+display:grid;grid-template-columns:212px minmax(0,1fr) 292px;gap:34px;align-items:start;
+}
+.channel-col{position:sticky;top:calc(var(--head-h) + 12px)}
+.channel-col h2{
+font-size:12.5px;letter-spacing:2px;color:var(--ink-3);font-weight:600;
+margin-bottom:12px;padding-left:2px;
+}
+.channel-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.channel-list a{
+display:flex;justify-content:space-between;align-items:center;gap:8px;
+padding:8px 11px;border-radius:var(--r-btn);font-size:14.5px;color:var(--ink-2);
+border-left:3px solid transparent;
+}
+.channel-list a em{font-style:normal;font-size:12px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.channel-list a:hover{background:#fff;color:var(--main)}
+.channel-list a.active{background:#fff;color:var(--main);font-weight:700;border-left-color:var(--accent);box-shadow:var(--sh)}
+.channel-note{
+margin-top:18px;padding:13px 14px;background:#fff;border:1px solid var(--line);
+border-radius:var(--r-card);font-size:13px;color:var(--ink-2);line-height:1.7;
+}
+.channel-note b{display:block;color:var(--main);font-size:13.5px;margin-bottom:5px}
+
+.main-col{min-width:0}
+.side-col{position:sticky;top:calc(var(--head-h) + 12px);display:flex;flex-direction:column;gap:20px}
+
+/* ===== 板块通用 ===== */
+section[id],.anchor{scroll-margin-top:calc(var(--head-h) + 16px)}
+.block{margin-bottom:46px}
+.block-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.block-h h2{
+font-size:22px;color:var(--main);letter-spacing:.4px;
+padding-left:13px;border-left:4px solid var(--accent);line-height:1.25;
+}
+.block-h .sub{font-size:13px;color:var(--ink-3);letter-spacing:.5px}
+.lead{font-size:15px;color:var(--ink-2);margin:0 0 18px;max-width:52em}
+
+/* 概览 */
+.overview{
+background:#fff;border:1px solid var(--line);border-radius:var(--r-banner);
+padding:26px 28px;box-shadow:var(--sh);
+}
+.overview p{margin:0 0 13px;font-size:15.3px;color:var(--ink-2)}
+.overview p:last-child{margin-bottom:0}
+.overview .mini-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.mini-tags a{
+font-size:12.5px;padding:4px 10px;border-radius:99px;background:var(--main-xl);color:var(--main-l);
+}
+.mini-tags a:hover{background:var(--main);color:#f0ead9}
+
+/* 精选卡片 */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:18px}
+.card{
+background:#fff;border:1px solid var(--line);border-radius:var(--r-card);
+overflow:hidden;display:flex;flex-direction:column;transition:.2s;
+}
+.card:hover{box-shadow:var(--sh-h);transform:translateY(-3px);border-color:#c8bfab}
+.card .thumb{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--panel-2)}
+.card .thumb img{width:100%;height:100%;object-fit:cover}
+.card .type{
+position:absolute;left:10px;top:10px;background:rgba(29,59,58,.9);color:#f2ecdc;
+font-size:11.5px;padding:3px 9px;border-radius:var(--r-tag);letter-spacing:.6px;
+}
+.card-body{padding:14px 15px 15px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card-body h3{font-size:16.5px;color:var(--ink);line-height:1.4}
+.card-body h3 a{color:inherit}
+.card-body h3 a:hover{color:var(--accent)}
+.card-body p{margin:0;font-size:13.6px;color:var(--ink-2);line-height:1.68;flex:1}
+.card-tags{display:flex;gap:6px;flex-wrap:wrap}
+.card-tags span{font-size:11.5px;color:var(--main-l);background:var(--main-xl);padding:2px 8px;border-radius:var(--r-tag)}
+.card-foot{
+display:flex;justify-content:space-between;align-items:center;
+font-size:12px;color:var(--ink-3);border-top:1px dashed var(--line);padding-top:9px;
+font-variant-numeric:tabular-nums;
+}
+.card-foot b{color:var(--accent);font-weight:700}
+
+/* 最新更新列表 */
+.update-list{list-style:none;margin:0;padding:0;background:#fff;border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden}
+.update-list li{
+display:grid;grid-template-columns:78px minmax(0,1fr);gap:16px;
+padding:15px 18px;border-bottom:1px solid #eee8da;
+}
+.update-list li:last-child{border-bottom:0}
+.update-list li:hover{background:#fbf9f3}
+.update-list time{
+font-size:12.5px;color:var(--main-l);font-variant-numeric:tabular-nums;
+background:var(--main-xl);border-radius:var(--r-tag);padding:3px 0;text-align:center;height:fit-content;
+letter-spacing:.2px;
+}
+.update-list h3{font-size:15.5px;margin-bottom:3px}
+.update-list h3 a{color:var(--ink)}
+.update-list h3 a:hover{color:var(--accent)}
+.update-list p{margin:0;font-size:13.4px;color:var(--ink-2);line-height:1.65}
+
+/* 分类入口 */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.cat-item{
+display:block;background:#fff;border:1px solid var(--line);border-radius:var(--r-card);
+padding:14px 15px;transition:.18s;
+}
+.cat-item:hover{border-color:var(--main-l);box-shadow:var(--sh);transform:translateY(-2px)}
+.cat-item strong{display:block;font-size:15px;color:var(--main);margin-bottom:4px}
+.cat-item span{font-size:12.5px;color:var(--ink-3);line-height:1.6;display:block}
+.cat-item em{font-style:normal;font-size:11.5px;color:var(--accent);letter-spacing:.4px;display:block;margin-top:7px}
+
+/* 深度解析 */
+.deep{
+background:#fff;border:1px solid var(--line);border-radius:var(--r-banner);
+padding:30px 32px;box-shadow:var(--sh);
+}
+.deep h3{
+font-size:18.5px;color:var(--main);margin:26px 0 11px;
+padding-bottom:7px;border-bottom:1px solid #ece6d6;
+}
+.deep h3:first-of-type{margin-top:6px}
+.deep p{margin:0 0 13px;font-size:15.2px;color:var(--ink-2)}
+.deep ul,.deep ol{margin:0 0 14px;padding-left:22px;font-size:15px;color:var(--ink-2)}
+.deep li{margin-bottom:6px}
+.deep .pull{
+border-left:3px solid var(--accent);background:#fbf7ee;padding:12px 16px;margin:0 0 16px;
+font-size:14.6px;color:var(--ink);border-radius:0 var(--r-tag) var(--r-tag) 0;
+}
+.deep .pull b{color:var(--main)}
+.layer-table{width:100%;border-collapse:collapse;font-size:13.8px;margin:6px 0 16px}
+.layer-table th,.layer-table td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top;color:var(--ink-2)}
+.layer-table th{background:var(--main-xl);color:var(--main);font-weight:700;font-size:13.2px}
+.layer-table td b{color:var(--ink)}
+
+/* 消费路径 */
+.path-way{display:grid;gap:14px}
+.path-step{
+display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;
+background:#fff;border:1px solid var(--line);border-radius:var(--r-card);padding:16px 18px;
+}
+.path-step .num{
+width:44px;height:44px;border-radius:50%;background:var(--main);color:#f2ecdc;
+display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;
+font-variant-numeric:tabular-nums;
+}
+.path-step h3{font-size:16px;margin-bottom:5px;color:var(--ink)}
+.path-step p{margin:0;font-size:13.8px;color:var(--ink-2);line-height:1.7}
+.path-step p + p{margin-top:6px}
+
+/* FAQ */
+.faq-wrap{background:#fff;border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden}
+details{border-bottom:1px solid #eee8da}
+details:last-child{border-bottom:0}
+summary{
+list-style:none;cursor:pointer;padding:15px 46px 15px 18px;position:relative;
+font-size:15px;color:var(--ink);font-weight:600;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{
+content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);
+font-size:19px;color:var(--main-l);font-weight:400;transition:.2s;
+}
+details[open] summary::after{content:"–";color:var(--accent)}
+details[open] summary{background:#fbf9f3}
+details p{margin:0;padding:0 18px 16px;font-size:14.3px;color:var(--ink-2);line-height:1.75}
+details p b{color:var(--main)}
+
+/* 评论 */
+.cmt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:14px}
+.cmt{
+background:#fff;border:1px solid var(--line);border-radius:var(--r-card);padding:14px 16px;
+display:flex;flex-direction:column;gap:7px;
+}
+.cmt-h{display:flex;align-items:center;gap:9px}
+.avatar{
+width:30px;height:30px;border-radius:50%;flex-shrink:0;
+display:flex;align-items:center;justify-content:center;
+font-size:13px;color:#fff;font-weight:700;
+}
+.cmt-h b{font-size:13.5px;color:var(--ink)}
+.cmt-h span{font-size:11.5px;color:var(--ink-3);margin-left:auto;font-variant-numeric:tabular-nums}
+.cmt p{margin:0;font-size:13.6px;color:var(--ink-2);line-height:1.7}
+.cmt .tag{font-size:11.5px;color:var(--accent);background:var(--accent-l);padding:2px 8px;border-radius:var(--r-tag);width:fit-content}
+
+/* 资讯 */
+.news-list{display:flex;flex-direction:column;gap:0;background:#fff;border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden}
+.news-item{
+display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;
+padding:16px 18px;border-bottom:1px solid #eee8da;
+}
+.news-item:last-child{border-bottom:0}
+.news-item img{width:150px;height:100px;object-fit:cover;border-radius:var(--r-tag)}
+.news-body h3{font-size:16px;margin-bottom:5px}
+.news-body h3 a{color:var(--ink)}
+.news-body h3 a:hover{color:var(--accent)}
+.news-meta{font-size:12.3px;color:var(--ink-3);margin-bottom:6px;font-variant-numeric:tabular-nums}
+.news-body p{margin:0;font-size:13.6px;color:var(--ink-2);line-height:1.68}
+
+/* 推荐标签索引 */
+.rec-index{display:flex;flex-wrap:wrap;gap:9px}
+.rec-index a{
+font-size:13.6px;padding:7px 14px;border-radius:99px;background:#fff;border:1px solid var(--line);
+color:var(--ink-2);transition:.16s;
+}
+.rec-index a:hover{background:var(--main);border-color:var(--main);color:#f2ecdc;transform:translateY(-2px)}
+.rec-index a b{color:var(--accent);font-weight:600;margin-left:5px;font-size:11.5px}
+.rec-index a:hover b{color:#f0c9a8}
+
+/* 榜单 */
+.rank-list{list-style:none;margin:0;padding:0;background:#fff;border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden}
+.rank-list li{
+display:grid;grid-template-columns:38px minmax(0,1fr) auto;gap:13px;align-items:center;
+padding:13px 17px;border-bottom:1px solid #eee8da;
+}
+.rank-list li:last-child{border-bottom:0}
+.rank-list li:hover{background:#fbf9f3}
+.rank-num{
+width:26px;height:26px;border-radius:var(--r-tag);display:flex;align-items:center;justify-content:center;
+font-size:13px;font-weight:700;background:var(--panel-2);color:var(--ink-3);font-variant-numeric:tabular-nums;
+}
+.rank-list li:nth-child(1) .rank-num{background:var(--main);color:#f2ecdc}
+.rank-list li:nth-child(2) .rank-num{background:var(--main-l);color:#f2ecdc}
+.rank-list li:nth-child(3) .rank-num{background:var(--accent);color:#fff}
+.rank-body b{display:block;font-size:14.8px;color:var(--ink);line-height:1.45}
+.rank-body span{font-size:12.3px;color:var(--ink-3)}
+.rank-score{font-size:13px;color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums}
+
+/* 互动投稿 */
+.contrib{
+background:linear-gradient(150deg,#1d3b3a,#2b4d49 65%,#365c56);
+color:#ebe5d6;border-radius:var(--r-banner);padding:28px 30px;
+display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:center;
+}
+.contrib h2{color:#fff;font-size:21px;margin-bottom:11px;border:0;padding:0}
+.contrib p{margin:0 0 9px;font-size:14.3px;color:#d6d2c2;line-height:1.75}
+.contrib ul{margin:0;padding-left:18px;font-size:13.6px;color:#cfd8d2}
+.contrib li{margin-bottom:5px}
+.contrib .c-box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:var(--r-card);padding:16px 18px}
+.contrib .c-box b{display:block;font-size:14px;color:#fff;margin-bottom:7px}
+.contrib .c-box span{font-size:12.6px;color:#c6cec8;line-height:1.7;display:block}
+.contrib .btn-main{background:#e9dfc4;color:#22362f}
+.contrib .btn-main:hover{background:#fff;color:#1d3b3a}
+
+/* 侧栏 */
+.side-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-card);padding:17px 18px}
+.side-card h2{font-size:14.5px;color:var(--main);margin-bottom:12px;letter-spacing:.5px}
+.hot-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.hot-list li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:10px;align-items:baseline}
+.hot-list i{font-style:normal;font-size:12.5px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.hot-list li:nth-child(-n+3) i{color:var(--accent);font-weight:700}
+.hot-list a{font-size:13.8px;color:var(--ink-2);line-height:1.5}
+.hot-list a:hover{color:var(--accent)}
+.hot-list span{display:block;font-size:11.8px;color:var(--ink-3);margin-top:2px}
+.side-flow{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.side-flow li{border-left:2px solid var(--line);padding-left:11px}
+.side-flow time{font-size:11.8px;color:var(--main-l);font-variant-numeric:tabular-nums}
+.side-flow a{display:block;font-size:13.6px;color:var(--ink-2);margin-top:2px;line-height:1.5}
+.side-flow a:hover{color:var(--accent)}
+.side-tag{display:flex;flex-wrap:wrap;gap:7px}
+.side-tag a{font-size:12.5px;padding:4px 10px;border-radius:var(--r-tag);background:var(--panel-2);color:var(--ink-2)}
+.side-tag a:hover{background:var(--main-xl);color:var(--main)}
+
+/* 搜索结果提示 */
+.search-feedback{
+display:none;margin-bottom:16px;padding:12px 16px;border-radius:var(--r-card);
+background:#fff;border:1px solid var(--line);font-size:14px;color:var(--ink-2);
+}
+.search-feedback.on{display:block}
+.search-feedback b{color:var(--accent)}
+
+/* 页尾 */
+.site-foot{background:#182b29;color:#c8cfc9;margin-top:40px;padding:40px 22px 26px}
+.foot-in{max-width:1360px;margin:0 auto}
+.foot-top{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:32px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.12)}
+.foot-brand{display:flex;align-items:center;gap:11px;margin-bottom:13px}
+.foot-brand svg{width:36px;height:36px}
+.foot-brand strong{font-size:17px;color:#fff;letter-spacing:.3px}
+.foot-desc{font-size:13.6px;line-height:1.8;color:#a9b4ae;margin:0 0 12px}
+.foot-meta{font-size:12.4px;color:#89948f;line-height:1.8}
+.foot-col h4{font-size:13.5px;color:#fff;margin-bottom:12px;letter-spacing:1px;font-weight:600}
+.foot-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+.foot-col a{font-size:13px;color:#a9b4ae}
+.foot-col a:hover{color:#e9dfc4}
+.foot-bottom{padding-top:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.3px;color:#89948f;line-height:1.8}
+.foot-bottom span{max-width:70em}
+
+/* 回到顶部 */
+.to-top{
+position:fixed;right:20px;bottom:24px;width:44px;height:44px;border-radius:50%;
+background:var(--main);color:#f2ecdc;border:0;cursor:pointer;
+display:flex;align-items:center;justify-content:center;font-size:17px;
+opacity:0;visibility:hidden;transition:.22s;z-index:70;box-shadow:var(--sh-h);
+}
+.to-top.on{opacity:1;visibility:visible}
+.to-top:hover{background:var(--main-l)}
+
+/* 遮罩 */
+.overlay{display:none;position:fixed;inset:0;background:rgba(20,30,28,.5);z-index:85}
+.overlay.on{display:block}
+
+@media (max-width:1100px){
+.layout{grid-template-columns:190px minmax(0,1fr);gap:26px}
+.side-col{grid-column:1/-1;position:static;flex-direction:row;flex-wrap:wrap}
+.side-col > .side-card{flex:1 1 260px}
+.hero-in{grid-template-columns:1fr;gap:30px}
+.hero-art{min-height:280px;max-width:520px}
+.contrib{grid-template-columns:1fr}
+}
+@media (max-width:1024px){
+.head-nav{order:3;flex-basis:100%}
+.layout{grid-template-columns:minmax(0,1fr)}
+.channel-col{
+position:static;order:-1;
+}
+.channel-col h2{display:none}
+.channel-list{flex-direction:row;flex-wrap:wrap;gap:7px}
+.channel-list a{border-left:0;background:#fff;border:1px solid var(--line);padding:6px 12px;font-size:13.6px}
+.channel-list a.active{border-left:0;border-color:var(--accent)}
+.channel-note{display:none}
+.foot-top{grid-template-columns:1fr 1fr;gap:24px}
+}
+@media (max-width:740px){
+.head-in{padding:10px 14px;gap:12px}
+.search-box{display:none}
+.head-tools .burger{display:flex}
+.head-nav{
+display:none;position:fixed;left:0;right:0;top:0;bottom:0;
+background:var(--bg);z-index:90;padding:80px 20px 24px;flex-direction:column;
+overflow-y:auto;gap:2px;
+}
+.head-nav.on{display:flex}
+.head-nav a{font-size:16px;padding:12px 8px;border-bottom:1px solid var(--line);border-radius:0}
+.nav-close{
+display:none;position:fixed;top:16px;right:16px;z-index:95;width:40px;height:40px;
+border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--main);font-size:18px;cursor:pointer;
+}
+.head-nav.on ~ .nav-close,.nav-close.on{display:block}
+.layout{padding:24px 14px 14px}
+.hero-in{padding:34px 16px 30px}
+.hero-stats{gap:18px}
+.hero-stats b{font-size:20px}
+.card-grid{grid-template-columns:1fr}
+.news-item{grid-template-columns:1fr}
+.news-item img{width:100%;height:150px}
+.update-list li{grid-template-columns:1fr;gap:6px}
+.update-list time{width:fit-content;padding:2px 10px}
+.deep{padding:22px 18px}
+.overview{padding:20px 18px}
+.contrib{padding:22px 18px}
+.foot-top{grid-template-columns:1fr}
+.to-top{right:14px;bottom:16px}
+.notice{gap:10px;font-size:12.5px;padding:7px 14px}
+.notice ul{gap:12px}
+}
+@media (prefers-reduced-motion:reduce){
+*{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+
+<div class="sticky-top">
+  <div class="notice" role="region" aria-label="站内更新公告">
+    <span class="nbrand">www.heliao88.com</span>
+    <span class="nsep" aria-hidden="true"></span>
+    <ul>
+      <li><b>11-07</b><a href="#updates">新增闽东柘荣双城话 42 条声调录音</a></li>
+      <li><b>11-05</b><a href="#updates">彝语北部方言 1,180 条词表校订版上线</a></li>
+      <li><b>本周</b><a href="#contrib">田野录音投稿 63 份待复核</a></li>
+    </ul>
+  </div>
+
+  <header class="site-head">
+    <div class="head-in">
+      <div class="brand">
+        <svg viewBox="0 0 64 64" role="img" aria-label="www.heliao88.com 标志图形">
+          <rect width="64" height="64" rx="14" fill="#1d3b3a"/>
+          <path d="M12 45V19h7l6 12 6-12h7v26h-5.6V28.6L27 41h-3.4L18.6 28.6V45z" fill="#e8d9b5"/>
+          <path d="M41 24c4.5 0 7.5 2.6 7.5 6.6 0 3.9-2.6 6.4-6.2 7.6l-1.2.4 4.3 6.4h-5.1l-3.6-6.1c-2.9-1.3-4.6-3.9-4.6-7.3C32.1 27 35.3 24 39.4 24z" fill="#c96f4a" opacity=".92"/>
+          <circle cx="16" cy="52" r="2" fill="#e8d9b5"/>
+        </svg>
+        <div class="brand-txt">
+          <strong>www.heliao88.com</strong>
+          <span>方言 · 语料 · 田野录音</span>
+        </div>
+      </div>
+
+      <nav class="head-nav" id="headNav" aria-label="主题导航">
+        <a href="#overview">语料概览</a>
+        <a href="#picks">精选语料</a>
+        <a href="#updates">采集动态</a>
+        <a href="#cats">语区分类</a>
+        <a href="#deep">深度解析</a>
+        <a href="#guide">使用路径</a>
+        <a href="#rank">录音榜</a>
+        <a href="#faq">常见问题</a>
+        <a href="#comments">听友评论</a>
+        <a href="#news">语情资讯</a>
+        <a href="#contrib">投稿上传</a>
+      </nav>
+
+      <div class="head-tools">
+        <div class="search-box">
+          <label for="siteSearch" class="skip">站内查找语料</label>
+          <input id="siteSearch" type="search" placeholder="查语区 / 方言点 / 词表" autocomplete="off">
+          <button type="button" id="searchBtn">查找</button>
+        </div>
+        <button class="burger" id="burger" type="button" aria-label="打开导航菜单" aria-expanded="false" aria-controls="headNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<button class="nav-close" id="navClose" type="button" aria-label="关闭导航菜单">✕</button>
+
+<section class="hero" aria-labelledby="pageTitle">
+  <div class="hero-in">
+    <div>
+      <span class="hero-kicker"><i aria-hidden="true"></i>汉语方言与少数民族语言语料库</span>
+      <h1 id="pageTitle">www.heliao88.com</h1>
+      <p class="hero-desc">按语区、语族、采集年份整理的方言录音与词表：闽东双城话声调、彝语北部方言基础词、客家话梅县腔口述史、侗台语数词对照，每条都带录音时长、发音人信息和校订状态。</p>
+      <div class="hero-actions">
+        <a class="btn btn-main" href="#picks">浏览精选语料</a>
+        <a class="btn btn-ghost" href="#contrib">上传田野录音</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>1,842</b><span>可检索方言点</span></div>
+        <div><b>27,600</b><span>条目录音</span></div>
+        <div><b>36</b><span>覆盖语族</span></div>
+        <div><b>11-07</b><span>最近校订</span></div>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <div class="wave-card wc-1">
+        <h4>柘荣双城话 · 阴平调值样本</h4>
+        <svg class="wave" viewBox="0 0 320 96" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="wg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2f5a56" stop-opacity=".28"/>
+              <stop offset="100%" stop-color="#2f5a56" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <g stroke="#d8d0bd" stroke-width="1">
+            <line x1="0" y1="24" x2="320" y2="24"/>
+            <line x1="0" y1="48" x2="320" y2="48"/>
+            <line x1="0" y1="72" x2="320" y2="72"/>
+          </g>
+          <path d="M0 40 Q20 34 34 46 T68 30 T102 52 T136 26 T170 44 T204 34 T238 54 T272 30 T306 42 L320 38"
+                fill="none" stroke="#2f5a56" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M0 66 Q24 58 40 70 T76 54 T112 74 T148 50 T184 68 T220 56 T256 76 T292 54 L320 64"
+                fill="none" stroke="#c96f4a" stroke-width="2" stroke-linecap="round" opacity=".85"/>
+          <path d="M0 40 Q20 34 34 46 T68 30 T102 52 T136 26 T170 44 T204 34 T238 54 T272 30 T306 42 L320 38 L320 96 L0 96 Z" fill="url(#wg)"/>
+        </svg>
+        <div class="meta"><span>录音 03:12</span><span>发音人 林氏 · 1948 年生</span></div>
+      </div>
+      <div class="wave-card wc-2">
+        <h4>彝语北部方言 · 声调分布</h4>
+        <div class="tone-row">
+          <i style="height:34px"></i><i style="height:26px"></i><i style="height:40px"></i>
+          <i style="height:22px"></i><i style="height:32px"></i><i style="height:18px"></i>
+          <i style="height:38px"></i><i style="height:24px"></i>
+        </div>
+        <p>高平 55、中平 33、低降 21 三调占比最高，词表 1,180 条已标注。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="layout">
+
+  <!-- 左频道 -->
+  <aside class="channel-col" aria-label="频道索引">
+    <h2>语区频道</h2>
+    <ul class="channel-list" id="channelList">
+      <li><a href="#cats" class="active" data-target="cats">闽语区<em>412</em></a></li>
+      <li><a href="#cats" data-target="cats">客家话区<em>266</em></a></li>
+      <li><a href="#cats" data-target="cats">粤语区<em>308</em></a></li>
+      <li><a href="#cats" data-target="cats">吴语区<em>241</em></a></li>
+      <li><a href="#cats" data-target="cats">西南官话<em>197</em></a></li>
+      <li><a href="#cats" data-target="cats">彝语支<em>154</em></a></li>
+      <li><a href="#cats" data-target="cats">侗台语族<em>138</em></a></li>
+      <li><a href="#cats" data-target="cats">苗瑶语族<em>126</em></a></li>
+    </ul>
+    <div class="channel-note">
+      <b>录音采集提示</b>
+      提交前请确认采样率 44.1kHz 以上、附发音人年龄与籍贯，双人对话需标注轮次。
+    </div>
+  </aside>
+
+  <!-- 中主内容 -->
+  <main class="main-col" id="main">
+
+    <div class="search-feedback" id="searchFeedback" role="status" aria-live="polite"></div>
+
+    <!-- 1 概览 -->
+    <section class="block" id="overview">
+      <div class="block-h">
+        <h2>方言与民族语语料的方向图谱</h2>
+        <span class="sub">录音 / 词表 / 口述史 / 声学标注</span>
+      </div>
+      <div class="overview">
+        <p>汉语方言的采集重心这几年从单字调转向连读变调。闽东柘荣双城话的阴平单字调是 44，进入"数词＋量词"结构后会落到 21，这类变化靠单字表测不出来，必须录成句。闽语区目前收录 412 个方言点，其中带连读变调标注的只有 97 个，缺口集中在浙南与闽北交界带。</p>
+        <p>少数民族语料里，彝语北部方言的规范化程度最高。喜德语音系有 43 个声母、10 个韵母、4 个声调，词表 1,180 条已由西昌学院语委组在 2026 年 10 月完成校订。侗台语族则偏重数词对照，壮语、布依语、傣泐语的一至十数词在 138 条录音里形成可横向比较的矩阵。</p>
+        <p>口述史部分与纯语音记录不同，更看内容密度。客家话梅县腔的 26 份访谈里，能用的只有 19 份，其余因环境噪声超过 45 分贝或发音人中途换用普通话而归档为参考素材。这类分层在条目页会直接标出。</p>
+        <p>值得关注的新方向是声学参数开放。2026 年 10 月起，部分条目开始附带基频曲线与共振峰的 CSV，方便做跨方言的量化比较。已开放的有 340 条，集中在吴语太湖片与粤语广府片。</p>
+        <div class="mini-tags">
+          <a href="#picks">连读变调</a>
+          <a href="#picks">单字调值</a>
+          <a href="#picks">基础词表</a>
+          <a href="#picks">口述史访谈</a>
+          <a href="#picks">基频曲线</a>
+          <a href="#picks">发音人档案</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 精选 -->
+    <section class="block" id="picks">
+      <div class="block-h">
+        <h2>精选语料条目</h2>
+        <span class="sub">近 30 天校订完成</span>
+      </div>
+      <p class="lead">以下条目均已通过双人复核，录音时长、发音人信息和校订状态完整。</p>
+      <div class="card-grid">
+
+        <article class="card">
+          <div class="thumb">
+            <img src="https://picsum.photos/seed/mindong-zr01/400/300" width="400" height="300" loading="lazy" alt="闽东柘荣双城话发音人录音现场，桌面录音设备与词表">
+            <span class="type">闽语·连读变调</span>
+          </div>
+          <div class="card-body">
+            <h3><a href="#updates">柘荣双城话阴平连读变调 42 条</a></h3>
+            <p>阴平 44 在"数＋量"结构中降至 21，共 42 条对照录音，附发音人林氏 1948 年生、城关镇籍贯。</p>
+            <div class="card-tags"><span>闽东片</span><span>声调</span><span>句法环境</span></div>
+            <div class="card-foot"><span>录音 2 小时 14 分</span><b>4.8</b></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb">
+            <img src="https://picsum.photos/seed/yibu-xide02/400/300" width="400" height="300" loading="lazy" alt="彝语北部方言基础词表打印稿与手写标注">
+            <span class="type">彝语支·词表</span>
+          </div>
+          <div class="card-body">
+            <h3><a href="#updates">彝语北部方言基础词表 1,180 条</a></h3>
+            <p>喜德语音系 43 声母、10 韵母、4 声调，词表含汉义、彝文、国际音标三栏，2026-10-28 完成校订。</p>
+            <div class="card-tags"><span>喜德音系</span><span>国际音标</span><span>校订版</span></div>
+            <div class="card-foot"><span>校订 2026-10-28</span><b>4.9</b></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb">
+            <img src="https://picsum.photos/seed/kejia-meixian03/400/300" width="400" height="300" loading="lazy" alt="客家话梅县腔口述史访谈录音，老人讲述旧时圩市">
+            <span class="type">客家话·口述史</span>
+          </div>
+          <div class="card-body">
+            <h3><a href="#news">梅县腔圩市记忆访谈 19 份</a></h3>
+            <p>26 份访谈中 19 份可用，内容涉及 1950 年代松口圩市的米价、船运与墟期，含方言词注释 214 条。</p>
+            <div class="card-tags"><span>松口镇</span><span>圩市</span><span>方言词注</span></div>
+            <div class="card-foot"><span>可用率 73%</span><b>4.6</b></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb">
+            <img src="https://picsum.photos/seed/dongtai-shuci04/400/300" width="400" height="300" loading="lazy" alt="侗台语族数词对照表手稿，壮语与布依语并列">
+            <span class="type">侗台语·数词</span>
+          </div>
+          <div class="card-body">
+            <h3><a href="#deep">壮语布依语数词一至十对照</a></h3>
+            <p>壮语邕宁腔与布依语望谟腔的一至十数词并排对照，138 条录音里 41 条带声学标注。</p>
+            <div class="card-tags"><span>邕宁腔</span><span>望谟腔</span><span>声学标注</span></div>
+            <div class="card-foot"><span>41 条带标注</span><b>4.5</b></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb">
+            <img src="https://picsum.photos/seed/wuyu-taihu05/400/300" width="400" height="300" loading="lazy" alt="吴语太湖片基频曲线截图，横轴时间纵轴赫兹">
+            <span class="type">吴语·声学</span>
+          </div>
+          <div class="card-body">
+            <h3><a href="#deep">太湖片基频曲线开放 186 条</a></h3>
+            <p>苏州、无锡、常州三点各 62 条，CSV 含基频与第一、第二共振峰，采样间隔 5 毫秒。</p>
+            <div class="card-tags"><span>苏州</span><span>无锡</span><span>共振峰</span></div>
+            <div class="card-foot"><span>2026-10-15 开放</span><b>4.7</b></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb">
+            <img src="https://picsum.photos/seed/yue-guangfu06/400/300" width="400" height="300" loading="lazy" alt="粤语广府片入声韵尾录音波形图">
+            <span class="type">粤语·韵尾</span>
+          </div>
+          <div class="card-body">
+            <h3><a href="#rank">广府片入声韵尾 -p/-t/-k 对照</a></h3>
+            <p>广州西关与佛山禅城两地对照，-p 韵尾在两地保留率均超 92%，-k 在禅城青年组降至 78%。</p>
+            <div class="card-tags"><span>西关</span><span>禅城</span><span>青年组差异</span></div>
+            <div class="card-foot"><span>录音 1 小时 46 分</span><b>4.6</b></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb">
+            <img src="https://picsum.photos/seed/miaoyao-qian07/400/300" width="400" height="300" loading="lazy" alt="苗瑶语族黔东苗语声母例词卡片">
+            <span class="type">苗瑶语·声母</span>
+          </div>
+          <div class="card-body">
+            <h3><a href="#cats">黔东苗语送气与不送气声母例词</a></h3>
+            <p>养蒿腔 8 对送气/不送气声母，每对配 6 个最小对立例词，共 48 条录音。</p>
+            <div class="card-tags"><span>养蒿腔</span><span>最小对立</span><span>声母</span></div>
+            <div class="card-foot"><span>48 条例词</span><b>4.4</b></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb">
+            <img src="https://picsum.photos/seed/xinan-guanhua08/400/300" width="400" height="300" loading="lazy" alt="西南官话成都腔儿化词录音词表">
+            <span class="type">官话·儿化</span>
+          </div>
+          <div class="card-body">
+            <h3><a href="#comments">成都腔儿化词 96 条轻重音对照</a></h3>
+            <p>96 条儿化词分轻重两读，其中 17 条轻重读语义不同，如"头"与"头儿"。</p>
+            <div class="card-tags"><span>成都</span><span>儿化</span><span>语义对立</span></div>
+            <div class="card-foot"><span>录音 58 分钟</span><b>4.3</b></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 3 最新更新 -->
+    <section class="block" id="updates">
+      <div class="block-h">
+        <h2>采集与校订动态</h2>
+        <span class="sub">2026-10-10 至 2026-11-07</span>
+      </div>
+      <ul class="update-list">
+        <li>
+          <time datetime="2026-11-07">11-07</time>
+          <div>
+            <h3><a href="#picks">柘荣双城话新增 42 条声调录音</a></h3>
+            <p>发音人林氏，城关镇籍贯，1948 年生，录音 2 小时 14 分，已附基频曲线。</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-11-05">11-05</time>
+          <div>
+            <h3><a href="#picks">彝语北部方言词表 1,180 条校订版上线</a></h3>
+            <p>西昌学院语委组复核，修订 87 处国际音标，补入 12 个农事词。</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-11-03">11-03</time>
+          <div>
+            <h3><a href="#news">梅县腔口述史第 20 份访谈完成转写</a></h3>
+            <p>松口镇发音人李姓，1939 年生，时长 71 分钟，方言词注释 38 条。</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-10-31">10-31</time>
+          <div>
+            <h3><a href="#deep">太湖片基频 CSV 新增常州 22 条</a></h3>
+            <p>采样间隔 5 毫秒，含基频与第一、第二共振峰，累计开放 186 条。</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-10-29">10-29</time>
+          <div>
+            <h3><a href="#picks">广府片入声韵尾对照补录禅城青年组</a></h3>
+            <p>20 至 28 岁发音人 9 位，-k 韵尾保留率 78%，较老年组低 15 个百分点。</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-10-26">10-26</time>
+          <div>
+            <h3><a href="#cats">黔东苗语养蒿腔声母例词补齐 48 条</a></h3>
+            <p>8 对送气/不送气声母，每对 6 个最小对立例词，均带发音人年龄。</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-10-22">10-22</time>
+          <div>
+            <h3><a href="#comments">成都腔儿化词轻重音标注完成第二轮</a></h3>
+            <p>96 条中 17 条存在语义对立，标注由两位听辨人独立完成，分歧 4 条已复核。</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-10-18">10-18</time>
+          <div>
+            <h3><a href="#news">侗台语数词对照新增傣泐语景洪腔</a></h3>
+            <p>一至十数词 10 条，发音人 3 位，均附录音与声调标注。</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-10-14">10-14</time>
+          <div>
+            <h3><a href="#rank">吴语太湖片录音评分规则调整</a></h3>
+            <p>新增"标注完整度"一项，占 20%，原有音质、可懂度两项各降 5 个百分点。</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-10-10">10-10</time>
+          <div>
+            <h3><a href="#contrib">田野录音投稿模板更新至 v3</a></h3>
+            <p>新增采样率、环境噪声、发音人籍贯三个必填字段，旧模板提交的 63 份待补录。</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 4 分类 -->
+    <section class="block" id="cats">
+      <div class="block-h">
+        <h2>按语区与语族分类</h2>
+        <span class="sub">8 个入口 · 条目数随校订变动</span>
+      </div>
+      <div class="cat-grid">
+        <a class="cat-item" href="#picks">
+          <strong>闽语区</strong>
+          <span>闽东、闽南、莆仙三片，含连读变调与文白异读录音</span>
+          <em>412 个方言点</em>
+        </a>
+        <a class="cat-item" href="#picks">
+          <strong>客家话区</strong>
+          <span>梅县腔、长汀腔、大埔腔，口述史与方言词注释为主</span>
+          <em>266 个方言点</em>
+        </a>
+        <a class="cat-item" href="#picks">
+          <strong>粤语区</strong>
+          <span>广府、四邑、高阳三片，入声韵尾与声调对照</span>
+          <em>308 个方言点</em>
+        </a>
+        <a class="cat-item" href="#deep">
+          <strong>吴语区</strong>
+          <span>太湖、临绍、瓯江三片，基频曲线与共振峰开放</span>
+          <em>241 个方言点</em>
+        </a>
+        <a class="cat-item" href="#comments">
+          <strong>西南官话</strong>
+          <span>成渝、滇西、黔北三小片，儿化与入声归派</span>
+          <em>197 个方言点</em>
+        </a>
+        <a class="cat-item" href="#picks">
+          <strong>彝语支</strong>
+          <span>北部、东部、南部方言，喜德音系词表最完整</span>
+          <em>154 个方言点</em>
+        </a>
+        <a class="cat-item" href="#deep">
+          <strong>侗台语族</strong>
+          <span>壮、布依、傣泐语数词对照，含声调标注</span>
+          <em>138 个方言点</em>
+        </a>
+        <a class="cat-item" href="#rank">
+          <strong>苗瑶语族</strong>
+          <span>黔东、湘西苗语声母对立，瑶语勉方言词汇</span>
+          <em>126 个方言点</em>
+        </a>
+      </div>
+    </section>
+
+    <!-- 5 深度解析 -->
+    <section class="block" id="deep">
+      <div class="block-h">
+        <h2>连读变调与词表可信度的判断维度</h2>
+        <span class="sub">深度解析</span>
+      </div>
+      <div class="deep">
+        <p>一条方言录音值不值得参考，先看它测的是单字调还是连读调。单字调稳定、易标注，但解释力有限；连读变调受句法结构牵制，采集成本高，却能解释为什么本地人听着"对"、外地人照着单字调念却"错"。</p>
+
+        <h3>单字调与连读调：两套测法对应两种问题</h3>
+        <p>柘荣双城话的阴平单字调记 44，这是 2026 年 10 月 3 日林氏录音里反复出现的稳定值，三位听辨人独立标注一致率 94%。同一发音人在"三只"、"五斤"这类数词加量词结构中，前一音节降至 21。42 条对照录音里，只有 6 条出现反向的 44 保持，全部集中在句末停顿前。</p>
+        <p>这组数据的价值不在调值本身，而在它划出了一条边界：单字表无法预测连读结果，必须把句法环境一并记录。如果一条语料只给单字调，遇到"为什么本地人念 21 我却只查到 44"的疑问就无法回答。</p>
+        <p>反过来，连读调录音的校订成本高出约三倍。42 条录音用了 2 小时 14 分原始素材，剪出可用片段 38 条，废弃 4 条因发音人中途换用普通话。</p>
+
+        <div class="pull"><b>可核对的结构：</b>一条连读变调录音的可信度，拆成四个可逐项打勾的环节——① 是否有同一发音人的单字调基线；② 是否标注句法环境（数＋量、动＋宾、并列）；③ 是否有第二位听辨人独立标注；④ 是否给出语速与停顿位置。四项齐全的条目，2026 年 10 月统计为 61 条；只有前两项的 143 条。</div>
+
+        <h3>词表校订：三个容易漏掉的检查点</h3>
+        <p>彝语北部方言 1,180 条词表在 2026-10-28 的校订中改了 87 处国际音标，其中 61 处是送气符号遗漏，19 处是声调标错，7 处是词义误配。这个分布说明一件事：词表错误的主要来源是转写环节，而不是发音人本身。</p>
+        <ul>
+          <li><b>送气符号</b>：喜德音系 43 个声母里有 11 对送气/不送气对立，漏标会让两个不同词变成同形。</li>
+          <li><b>声调数字</b>：4 个声调在连续话语中会中和，词表须以单念为准并注明。</li>
+          <li><b>农事词季节限定</b>：本次补入的 12 个词中，5 个与特定农时绑定，脱离季节语境会产生歧义。</li>
+        </ul>
+        <p>校订前后可直接对比：旧版"荞麦"条目标为 tʂʰo³³ma³³，新版改为 tʂʰo³³ma⁵⁵，第二音节声调由中平改高平，依据是 2026-09-19 三位喜德发音人的一致读法。</p>
+
+        <h3>口述史录音的可用率为什么只有七成</h3>
+        <p>梅县腔 26 份访谈里 19 份可用，7 份归档为参考素材。原因分三类：环境噪声超过 45 分贝的 4 份，发音人中途转用普通话超过总时长 20% 的 2 份，关键人名地名无法核实的 1 份。</p>
+        <table class="layer-table">
+          <caption class="skip">梅县腔口述史录音可用性分层</caption>
+          <thead>
+            <tr><th>层级</th><th>判定条件</th><th>数量</th><th>用途</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><b>可直接引用</b></td><td>噪声低于 45 分贝、方言占比超 90%、人名地名可核</td><td>11 份</td><td>词条例证、方言词注释</td></tr>
+            <tr><td><b>需标注后引用</b></td><td>噪声 45–55 分贝，或方言占比 80%–90%</td><td>8 份</td><td>内容参考，不作语音样本</td></tr>
+            <tr><td><b>参考素材</b></td><td>中途转普通话超 20%，或关键信息无法核实</td><td>7 份</td><td>背景线索，不作证据</td></tr>
+          </tbody>
+        </table>
+        <p>这张分层表的意义在于：同样是"梅县腔访谈"，11 份和 7 份能支撑的结论完全不同。把 26 份笼统算作"26 份语料"，等于把参考线索当成了证据。</p>
+
+        <h3>声学参数开放之后，比较的基准变了</h3>
+        <p>太湖片 186 条基频 CSV 开放后，跨方言比较从"听感描述"转向"数值对照"。苏州、无锡、常州三点各 62 条，采样间隔 5 毫秒，可算出各自的基频均值与斜率。已公开的对照显示：苏州阴平基频均值约 198 赫兹，无锡约 186 赫兹，常州约 172 赫兹；三点斜率均为下降，常州下降幅度最大。</p>
+        <p>这组数字能反驳一种常见说法——"吴语太湖片内部声调差别不大"。均值差 26 赫兹、斜率差近一倍，听感上就是"苏州高、常州沉"。差别不大的是调类数量，不是调值实现。</p>
+        <p>数值比较也有边界。186 条样本的发音人年龄集中在 55 岁以上，青年组只有 23 条，拿这组数据推断"吴语正在变化"证据不足，只能说明老年组的现状。</p>
+      </div>
+    </section>
+
+    <!-- 6 体验指南 -->
+    <section class="block" id="guide">
+      <div class="block-h">
+        <h2>语料的使用顺序与取舍标准</h2>
+        <span class="sub">从查词到引用</span>
+      </div>
+      <div class="path-way">
+        <div class="path-step">
+          <div class="num">1</div>
+          <div>
+            <h3>先定问题类型，再选语料形态</h3>
+            <p>要查某个词怎么念，直接进词表；要弄清一句话里声调怎么变，进连读变调录音；要了解一个地方的生活史，进口述史访谈。三类语料混着找，最容易出现"词表对不上录音"的困惑。</p>
+          </div>
+        </div>
+        <div class="path-step">
+          <div class="num">2</div>
+          <div>
+            <h3>看发音人档案，不只看录音长度</h3>
+            <p>同样 60 分钟录音，1948 年生的城关镇发音人和 1995 年生的城郊发音人，能回答的问题不一样。前者适合查传统词形，后者适合看变化趋势。档案里缺年龄或籍贯，条目价值直接打折。</p>
+          </div>
+        </div>
+        <div class="path-step">
+          <div class="num">3</div>
+          <div>
+            <h3>比较同类条目时，先对齐校订状态</h3>
+            <p>校订版与初稿版的差别常在细节：一个送气符号、一个声调数字。拿初稿版去和校订版比较，结论会偏。同一方言点优先用最近校订日期的那一条。</p>
+          </div>
+        </div>
+        <div class="path-step">
+          <div class="num">4</div>
+          <div>
+            <h3>判断值不值得投入时间，看四项是否齐全</h3>
+            <p>单字调基线、句法环境、第二听辨人、语速停顿——四项齐全的连读变调条目可以直接引用；缺两项以上，当作线索用，别当结论用。</p>
+          </div>
+        </div>
+        <div class="path-step">
+          <div class="num">5</div>
+          <div>
+            <h3>口述史先看可用性分层，再决定引用方式</h3>
+            <p>可直接引用的访谈能作词条例证；需标注后引用的只能作内容参考；参考素材适合找线索，不适合写进结论。分层信息在条目页顶部直接标出。</p>
+          </div>
+        </div>
+        <div class="path-step">
+          <div class="num">6</div>
+          <div>
+            <h3>声学参数用于横向比较，不用于纵向推断</h3>
+            <p>186 条基频数据适合比较苏州、无锡、常州的调值差异；样本年龄偏大，用来推断"正在变化"证据不足。比较对象要同年龄段、同性别比例，否则差值可能来自发音人构成。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 FAQ -->
+    <section class="block" id="faq">
+      <div class="block-h">
+        <h2>方言语料常见问题</h2>
+        <span class="sub">6 问</span>
+      </div>
+      <div class="faq-wrap">
+        <details open>
+          <summary>柘荣双城话的阴平到底是 44 还是 21？</summary>
+          <p>两个都对，看语境。<b>单字念</b>是 44，稳定值，三位听辨人一致率 94%。<b>进入数词加量词结构</b>时前一音节降到 21，42 条对照录音里只有 6 条在句末停顿前保持 44。查词形用单字调，查成句读音用连读调。</p>
+        </details>
+        <details>
+          <summary>彝语北部方言词表里的送气符号为什么重要？</summary>
+          <p>喜德音系 43 个声母中有 11 对送气与不送气对立。<b>漏标送气符号</b>会让两个不同的词写成同一个形式。2026-10-28 的校订改了 87 处国际音标，其中 61 处就是补送气符号。查词时看到同一汉义对应两个彝文形式，多半是送气对立。</p>
+        </details>
+        <details>
+          <summary>梅县腔口述史为什么有 7 份不能直接引用？</summary>
+          <p>三类原因：<b>环境噪声超过 45 分贝</b>的 4 份，<b>发音人中途转用普通话超过总时长 20%</b> 的 2 份，<b>关键人名地名无法核实</b>的 1 份。这些访谈仍可作背景线索，但不能当语音样本或词条例证使用。</p>
+        </details>
+        <details>
+          <summary>广府片 -k 韵尾在年轻人里真的在消失吗？</summary>
+          <p>禅城 20 至 28 岁发音人 9 位的保留率是 <b>78%</b>，同地老年组约 93%，差 15 个百分点。广州西关两地差距更小。说"消失"过头了，说"青年组保留率下降"更准确。样本只有 9 人，结论限于这批发音人。</p>
+        </details>
+        <details>
+          <summary>太湖片基频数据能不能用来证明吴语声调在变？</summary>
+          <p>186 条样本里 55 岁以上占 163 条，青年组只有 23 条。<b>样本年龄结构偏老</b>，能说明老年组的调值现状，不足以推断变化趋势。做纵向推断需要同地、同性别比例、跨年龄段的平衡采样。</p>
+        </details>
+        <details>
+          <summary>成都腔儿化词的轻重两读，怎么判断是不是语义对立？</summary>
+          <p>96 条里 17 条存在语义对立，例如"头"指头部、"头儿"指领头人。判断依据是<b>两位听辨人独立标注后是否一致</b>，另有 4 条分歧条目已复核。剩下的 79 条轻重读只影响语气，不改变词义。</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- 8 评论 -->
+    <section class="block" id="comments">
+      <div class="block-h">
+        <h2>听友与采集者的留言</h2>
+        <span class="sub">16 条</span>
+      </div>
+      <div class="cmt-grid">
+
+        <div class="cmt">
+          <div class="cmt-h"><span class="avatar" style="background:#2f5a56">林</span><b>柘荣老林</b><span>11-07</span></div>
+          <p>42 条里第 17 条那个"五斤"，我阿嬷念的就是 21，跟单字表上的 44 完全两样。小时候听惯了不觉得，现在看标注才反应过来。</p>
+          <span class="tag">柘荣双城话</span>
+        </div>
+
+        <div class="cmt">
+          <div class="cmt-h"><span class="avatar" style="background:#c96f4a">喜</span><b>喜德阿呷</b><span>11-06</span></div>
+          <p>词表校订版比初稿靠谱多了。旧版"荞麦"第二音节标 33，我们那边一直念高平，新版改 55 是对的。</p>
+          <span class="tag">彝语词表</span>
+        </div>
+
+        <div class="cmt">
+          <div class="cmt-h"><span class="avatar" style="background:#6d7c78">松</span><b>松口阿梅</b><span>11-05</span></div>
+          <p>李姓那位老人讲的墟期我听过类似的。不过录音里有一段的鸡叫特别响，估计就是被归到参考素材那批。</p>
+          <span class="tag">梅县腔访谈</span>
+        </div>
+
+        <div class="cmt">
+          <div class="cmt-h"><span class="avatar" style="background:#41504c">苏</span><b>苏州小顾</b><span>11-04</span></div>
+          <p>苏州 198 赫兹、常州 172 赫兹，差 26 赫兹听着不多，实际两地人一开口就能分出。数据总算把这事说清楚了。</p>
+          <span class="tag">太湖片基频</span>
+        </div>
+
+        <div class="cmt">
+          <div class="cmt-h"><span class="avatar" style="background:#8a6b4f">禅</span><b>禅城阿锋</b><span>11-03</span></div>
+          <p>78% 这个数我信。我自己念"食"还带 -k，我表弟 2000 年的，念起来已经收得很轻了。9 个人样本是少了点。</p>
+          <span class="tag">广府片韵尾</span>
+        </div>
+
+        <div class="cmt">
+          <div class="cmt-h"><span class="avatar" style="background:#2f5a56">蓉</span><b>成都幺妹儿</b><span>11-02</span></div>
+          <p>"头"和"头儿"那条我笑了，家里老人确实分得清，我这辈已经混着用了。17 条语义对立能再列全一点就好了。</p>
+          <span class="tag">成都腔儿化</span>
+        </div>
+
+        <div class="cmt">
+          <div class="cmt-h"><span class="avatar" style="background:#7a5c8a">望</span><b>望谟小韦</b><span>11-01</span></div>
+          <p>布依语数词那段，一至十我们那边"二"有两种读法，看用在序数还是基数，条目里没分开写，有点可惜。</p>
+          <span class="tag">侗台语数词</span>
+        </div>
+
+        <div class="cmt">
+          <div class="cmt-h"><span class="avatar" style="background:#c96f4a">养</span><b>养蒿阿榜</b><span>10-30</span></div>
+          <p>送气不送气那 8 对例词选得挺典型，"pa"和"pʰa"放一起，外地人听着像同一个词，本地小孩一听就分。</p>
+          <span class="tag">黔东苗语</span>
+        </div>
+
+        <div class="cmt">
+          <div class="cmt-h"><span class="avatar" style="background:#41504c">无</span><b>无锡老周</b><span>10-29</span></div>
+          <p>采样间隔 5 毫秒够用了。就是 CSV 下载下来列名全是英文缩写，F0、F1、F2 还好，第一次看的人得查一下。</p>
+          <span class="tag">声学参数</span>
+        </div>
+
+        <div class="cmt">
+          <div class="cmt-h"><span class="avatar" style="background:#6d7c78">西</span><b>西昌小马</b><span>10-27</span></div>
+          <p>补的 12 个农事词挺有意思，荞麦、燕麦、点播、撒种这些，脱离季节问老人还真容易答岔。</p>
+          <span class="tag">彝语农事词</span>
+        </div>
+
+        <div class="cmt">
+          <div class="cmt-h"><span class="avatar" style="background:#8a6b4f">广</span><b>广州陈生</b><span>10-25</span></div>
+          <p>西关和禅城一起比有点怪，两地口音本来就有差别，-k 保留率不同未必是年龄原因，也可能是地点原因。</p>
+          <span class="tag">广府片韵尾</span>
+        </div>
+
+        <div class="cmt">
+          <div class="cmt-h"><span class="avatar" style="background:#2f5a56">景</span><b>景洪玉姐</b><span>10-24</span></div>
+          <p>傣泐语数词那 10 条录得干净，三位发音人年龄差得开，能看出"五"的声调在两代人之间的细微差别。</p>
+          <span class="tag">傣泐语</span>
+        </div>
+
+        <div class="cmt">
+          <div class="cmt-h"><span class="avatar" style="background:#7a5c8a">长</span><b>长汀阿秀</b><span>10-22</span></div>
+          <p>投稿模板 v3 加了噪声字段是好事，之前传上去的几段自己听着都嫌吵，不知道当时怎么过的。</p>
+          <span class="tag">投稿模板</span>
+        </div>
+
+        <div class="cmt">
+          <div class="cmt-h"><span class="avatar" style="background:#c96f4a">莆</span><b>莆田阿杰</b><span>10-20</span></div>
+          <p>闽语区 412 个点里带连读标注的才 97 个，浙南闽北交界那块确实空。我老家那边会讲的人不多了。</p>
+          <span class="tag">闽语区</span>
+        </div>
+
+        <div class="cmt">
+          <div class="cmt-h"><span class="avatar" style="background:#41504c">路</span><b>路过的语言学学生</b><span>10-19</span></div>
+          <p>做课程作业找连读变调的例子，翻了半天，四项齐全的只有 61 条，剩下的缺第二听辨人。慢慢补吧。</p>
+        </div>
+
+        <div class="cmt">
+          <div class="cmt-h"><span class="avatar" style="background:#6d7c78">夜</span><b>夜里听录音的人</b><span>10-17</span></div>
+          <p>有些条目的背景音比语音还清楚，风扇声、狗叫、摩托车，听着倒是挺有现场感，做标注就麻烦了。</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 9 资讯 -->
+    <section class="block" id="news">
+      <div class="block-h">
+        <h2>语情与采集资讯</h2>
+        <span class="sub">6 条</span>
+      </div>
+      <div class="news-list">
+
+        <article class="news-item">
+          <img src="https://picsum.photos/seed/news-xide-jiang/600/400" width="600" height="400" loading="lazy" alt="喜德县彝语词表校订工作会议现场">
+          <div class="news-body">
+            <h3><a href="#picks">喜德彝语词表校订完成，改动 87 处国际音标</a></h3>
+            <div class="news-meta">2026-11-05 · 西昌学院语委组</div>
+            <p>校订组由 4 人组成，从 9 月 19 日起对照 3 位发音人复核。61 处补送气符号，19 处改声调，7 处改词义；补入 12 个农事词，其中 5 个与特定农时绑定。</p>
+          </div>
+        </article>
+
+        <article class="news-item">
+          <img src="https://picsum.photos/seed/news-zherong-lin/600/400" width="600" height="400" loading="lazy" alt="柘荣城关镇老宅内录音设备与词表">
+          <div class="news-body">
+            <h3><a href="#picks">柘荣城关镇完成 42 条连读变调录音</a></h3>
+            <div class="news-meta">2026-11-07 · 闽东采集小组</div>
+            <p>发音人林氏 1948 年生，素材 2 小时 14 分，剪出 38 条可用。4 条废弃，原因是发音人中途转用普通话。录音附基频曲线，可对照单字调基线。</p>
+          </div>
+        </article>
+
+        <article class="news-item">
+          <img src="https://picsum.photos/seed/news-meixian-li/600/400" width="600" height="400" loading="lazy" alt="梅县松口镇老街圩市旧址，老人受访">
+          <div class="news-body">
+            <h3><a href="#comments">梅县松口镇第 20 份口述史转写完成</a></h3>
+            <div class="news-meta">2026-11-03 · 客家话采集组</div>
+            <p>发音人李姓，1939 年生，录音 71 分钟。内容涉及 1950 年代松口圩市的米价与船运班次，方言词注释 38 条。转写稿已进复核流程，预计 11 月中旬归档。</p>
+          </div>
+        </article>
+
+        <article class="news-item">
+          <img src="https://picsum.photos/seed/news-wuyu-f0/600/400" width="600" height="400" loading="lazy" alt="吴语基频曲线对照图表，苏州无锡常州三点">
+          <div class="news-body">
+            <h3><a href="#deep">太湖片基频 CSV 扩至 186 条，新增常州 22 条</a></h3>
+            <div class="news-meta">2026-10-31 · 声学参数组</div>
+            <p>新增条目采样间隔 5 毫秒，含基频与第一、第二共振峰。三点基频均值分别为苏州 198、无锡 186、常州 172 赫兹。青年组仅 23 条，暂不做趋势推断。</p>
+          </div>
+        </article>
+
+        <article class="news-item">
+          <img src="https://picsum.photos/seed/news-guangfu-rusheng/600/400" width="600" height="400" loading="lazy" alt="粤语入声韵尾录音波形与韵尾标注">
+          <div class="news-body">
+            <h3><a href="#rank">禅城青年组入声韵尾补录 9 人，-k 保留率 78%</a></h3>
+            <div class="news-meta">2026-10-29 · 粤语采集组</div>
+            <p>发音人年龄 20 至 28 岁。同地老年组 -k 保留率约 93%，相差 15 个百分点；广州西关两地差距较小。样本仅 9 人，结论限于这批发音人。</p>
+          </div>
+        </article>
+
+        <article class="news-item">
+          <img src="https://picsum.photos/seed/news-daile-jinghong/600/400" width="600" height="400" loading="lazy" alt="景洪傣泐语数词录音，三位发音人">
+          <div class="news-body">
+            <h3><a href="#picks">傣泐语景洪腔数词一至十录音入档</a></h3>
+            <div class="news-meta">2026-10-18 · 侗台语采集组</div>
+            <p>三位发音人年龄分别为 71、58、34 岁，均附声调标注。"五"的声调在两代之间存在细微差别，已单独标注，待更多样本验证。</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 10 相关推荐 -->
+    <section class="block" id="rec">
+      <div class="block-h">
+        <h2>相关检索方向</h2>
+        <span class="sub">按条目与类型索引</span>
+      </div>
+      <div class="rec-index">
+        <a href="#picks">闽东连读变调<b>42</b></a>
+        <a href="#picks">彝语基础词表<b>1,180</b></a>
+        <a href="#news">梅县腔圩市访谈<b>19</b></a>
+        <a href="#deep">壮布依数词对照<b>138</b></a>
+        <a href="#deep">太湖片基频 CSV<b>186</b></a>
+        <a href="#rank">广府片入声韵尾<b>-p/-t/-k</b></a>
+        <a href="#picks">黔东苗语送气声母<b>48</b></a>
+        <a href="#comments">成都腔儿化轻重读<b>96</b></a>
+        <a href="#cats">喜德音系<b>43/10/4</b></a>
+        <a href="#cats">傣泐语景洪腔<b>10</b></a>
+        <a href="#faq">口述史可用性分层<b>3 层</b></a>
+        <a href="#guide">四项齐全判定法<b>4 项</b></a>
+      </div>
+    </section>
+
+    <!-- 11 榜单 -->
+    <section class="block" id="rank">
+      <div class="block-h">
+        <h2>本周录音质量榜</h2>
+        <span class="sub">音质 40% · 可懂度 40% · 标注完整度 20%</span>
+      </div>
+      <ul class="rank-list">
+        <li>
+          <span class="rank-num">1</span>
+          <div class="rank-body"><b>喜德彝语基础词表校订版</b><span>1,180 条 · 送气符号 61 处补正</span></div>
+          <span class="rank-score">96.4</span>
+        </li>
+        <li>
+          <span class="rank-num">2</span>
+          <div class="rank-body"><b>柘荣双城话阴平连读变调 42 条</b><span>听辨一致率 94% · 附基频</span></div>
+          <span class="rank-score">94.8</span>
+        </li>
+        <li>
+          <span class="rank-num">3</span>
+          <div class="rank-body"><b>太湖片基频曲线 186 条</b><span>采样 5 毫秒 · 三点对照</span></div>
+          <span class="rank-score">93.1</span>
+        </li>
+        <li>
+          <span class="rank-num">4</span>
+          <div class="rank-body"><b>黔东苗语送气声母最小对立 48 条</b><span>8 对声母 · 每对 6 例词</span></div>
+          <span class="rank-score">91.6</span>
+        </li>
+        <li>
+          <span class="rank-num">5</span>
+          <div class="rank-body"><b>广府片入声韵尾对照</b><span>西关与禅城 · 青年组 9 人</span></div>
+          <span class="rank-score">89.7</span>
+        </li>
+        <li>
+          <span class="rank-num">6</span>
+          <div class="rank-body"><b>梅县腔圩市记忆访谈 19 份</b><span>可用率 73% · 方言词注 214 条</span></div>
+          <span class="rank-score">87.2</span>
+        </li>
+        <li>
+          <span class="rank-num">7</span>
+          <div class="rank-body"><b>成都腔儿化词轻重音 96 条</b><span>语义对立 17 条 · 分歧 4 条已复核</span></div>
+          <span class="rank-score">85.9</span>
+        </li>
+        <li>
+          <span class="rank-num">8</span>
+          <div class="rank-body"><b>傣泐语景洪腔数词 10 条</b><span>三位发音人 · 跨两代对照</span></div>
+          <span class="rank-score">84.3</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 12 互动投稿 -->
+    <section class="block" id="contrib">
+      <div class="contrib">
+        <div>
+          <h2>田野录音投稿与词表上传</h2>
+          <p>手上有方言录音、词表或口述史素材，可以按 v3 模板提交。模板要求填写采样率、环境噪声、发音人籍贯三个必填字段，缺一项会退回补录。</p>
+          <ul>
+            <li>采样率建议 44.1kHz 以上，单声道即可</li>
+            <li>环境噪声低于 45 分贝可直接进可用层</li>
+            <li>附发音人年龄、籍贯、母语使用年限</li>
+            <li>双人对话需标注说话人轮次</li>
+          </ul>
+        </div>
+        <div class="c-box">
+          <b>当前待复核</b>
+          <span>63 份投稿等待复核，其中 41 份为旧模板提交，需补采样率与环境噪声两项。本周新增投稿 12 份，平均录音时长 23 分钟。</span>
+          <div style="margin-top:14px">
+            <a class="btn btn-main" href="#updates">查看投稿进度</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 右侧辅助栏 -->
+  <aside class="side-col" aria-label="辅助信息">
+
+    <div class="side-card">
+      <h2>本周下载最多</h2>
+      <ol class="hot-list">
+        <li><i>01</i><div><a href="#picks">彝语北部方言词表 1,180 条</a><span>校订版 · 10-28</span></div></li>
+        <li><i>02</i><div><a href="#picks">柘荣双城话连读变调 42 条</a><span>附基频 · 11-07</span></div></li>
+        <li><i>03</i><div><a href="#deep">太湖片基频 CSV 186 条</a><span>5 毫秒采样 · 10-31</span></div></li>
+        <li><i>04</i><div><a href="#picks">黔东苗语送气声母 48 条</a><span>最小对立 · 10-26</span></div></li>
+        <li><i>05</i><div><a href="#comments">成都腔儿化轻重读 96 条</a><span>语义对立 17 条</span></div></li>
+      </ol>
+    </div>
+
+    <div class="side-card">
+      <h2>近期校订流</h2>
+      <ul class="side-flow">
+        <li><time datetime="2026-11-07">11-07</time><a href="#updates">柘荣双城话 42 条入档</a></li>
+        <li><time datetime="2026-11-05">11-05</time><a href="#updates">彝语词表改 87 处</a></li>
+        <li><time datetime="2026-11-03">11-03</time><a href="#updates">梅县第 20 份转写</a></li>
+        <li><time datetime="2026-10-31">10-31</time><a href="#updates">常州基频加 22 条</a></li>
+        <li><time datetime="2026-10-29">10-29</time><a href="#updates">禅城韵尾补 9 人</a></li>
+        <li><time datetime="2026-10-26">10-26</time><a href="#updates">养蒿腔例词补齐</a></li>
+      </ul>
+    </div>
+
+    <div class="side-card">
+      <h2>语料类型索引</h2>
+      <div class="side-tag">
+        <a href="#picks">单字调表</a>
+        <a href="#picks">连读变调</a>
+        <a href="#picks">基础词表</a>
+        <a href="#picks">口述史</a>
+        <a href="#deep">基频曲线</a>
+        <a href="#deep">共振峰</a>
+        <a href="#picks">最小对立</a>
+        <a href="#comments">儿化词</a>
+        <a href="#deep">数词对照</a>
+        <a href="#picks">声母例词</a>
+      </div>
+    </div>
+
+  </aside>
+
+</div>
+
+<footer class="site-foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">
+          <svg viewBox="0 0 64 64" role="img" aria-label="www.heliao88.com 页脚标志">
+            <rect width="64" height="64" rx="14" fill="#2f5a56"/>
+            <path d="M12 45V19h7l6 12 6-12h7v26h-5.6V28.6L27 41h-3.4L18.6 28.6V45z" fill="#e8d9b5"/>
+            <path d="M41 24c4.5 0 7.5 2.6 7.5 6.6 0 3.9-2.6 6.4-6.2 7.6l-1.2.4 4.3 6.4h-5.1l-3.6-6.1c-2.9-1.3-4.6-3.9-4.6-7.3C32.1 27 35.3 24 39.4 24z" fill="#c96f4a" opacity=".92"/>
+          </svg>
+          <strong>www.heliao88.com</strong>
+        </div>
+        <p class="foot-desc">方言录音与少数民族语词表的聚合库。收录时段从 2019 年第一批田野录音延续到 2026 年 11 月，条目类型包括单字调表、连读变调录音、基础词表、口述史访谈、声学参数 CSV 五类，每周三、周五各校订一批。</p>
+        <p class="foot-meta">最近更新：2026-11-07（柘荣双城话 42 条声调录音入档）<br>条目数据为示例内容，供检索与结构演示使用。</p>
+      </div>
+      <div class="foot-col">
+        <h4>语区入口</h4>
+        <ul>
+          <li><a href="#cats">闽语区</a></li>
+          <li><a href="#cats">客家话区</a></li>
+          <li><a href="#cats">粤语区</a></li>
+          <li><a href="#cats">吴语区</a></li>
+          <li><a href="#cats">西南官话</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>语族入口</h4>
+        <ul>
+          <li><a href="#cats">彝语支</a></li>
+          <li><a href="#cats">侗台语族</a></li>
+          <li><a href="#cats">苗瑶语族</a></li>
+          <li><a href="#rank">录音质量榜</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>参与与说明</h4>
+        <ul>
+          <li><a href="#contrib">田野录音投稿</a></li>
+          <li><a href="#contrib">词表上传</a></li>
+          <li><a href="#updates">校订动态</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>www.heliao88.com · 方言与民族语语料聚合示例站 · 条目名称、发音人信息、录音时长与评分为示例数据，不构成学术引用依据。</span>
+      <span>内容校订节奏：每周三、周五</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" aria-label="回到页面顶部">↑</button>
+
+<script>
+(function(){
+  var burger=document.getElementById('burger');
+  var nav=document.getElementById('headNav');
+  var overlay=document.getElementById('overlay');
+  var navClose=document.getElementById('navClose');
+  var toTop=document.getElementById('toTop');
+  var searchInput=document.getElementById('siteSearch');
+  var searchBtn=document.getElementById('searchBtn');
+  var feedback=document.getElementById('searchFeedback');
+  var channels=document.querySelectorAll('#channelList a');
+
+  function openNav(){
+    nav.classList.add('on');overlay.classList.add('on');navClose.classList.add('on');
+    burger.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+    var first=nav.querySelector('a');
+    if(first) first.focus();
+  }
+  function closeNav(){
+    nav.classList.remove('on');overlay.classList.remove('on');navClose.classList.remove('on');
+    burger.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }
+  if(burger){
+    burger.addEventListener('click',function(){
+      nav.classList.contains('on')?closeNav():openNav();
+    });
+  }
+  if(overlay) overlay.addEventListener('click',closeNav);
+  if(navClose) navClose.addEventListener('click',closeNav);
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&nav.classList.contains('on')){closeNav();burger.focus();}
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      if(window.matchMedia('(max-width:740px)').matches){closeNav();}
+    });
+  });
+
+  window.addEventListener('scroll',function(){
+    toTop.classList.toggle('on',window.scrollY>window.innerHeight*0.9);
+  },{passive:true});
+  toTop.addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+
+  /* 滚动高亮频道 */
+  var sections=['cats','overview','picks','updates','deep','guide','rank','faq','comments','news','contrib'];
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        channels.forEach(function(a){
+          a.classList.toggle('active',a.getAttribute('data-target')===en.target.id);
+        });
+      }
+    });
+  },{rootMargin:'-140px 0px -60% 0px',threshold:0});
+  sections.forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) obs.observe(el);
+  });
+
+  /* 本地查找 */
+  var index=[];
+  document.querySelectorAll('main .card, main .update-list li, main .news-item, main .cat-item, main .rank-list li, main .faq-wrap details').forEach(function(el){
+    var h=el.querySelector('h3, summary, strong, b');
+    var txt=(el.textContent||'').toLowerCase();
+    if(h){index.push({el:el,title:h.textContent.trim(),text:txt});}
+  });
+
+  function doSearch(){
+    var q=(searchInput.value||'').trim();
+    if(!q){
+      feedback.classList.remove('on');
+      feedback.innerHTML='';
+      index.forEach(function(i){i.el.style.display='';});
+      return;
+    }
+    var ql=q.toLowerCase();
+    var hits=[];
+    index.forEach(function(i){
+      var match=i.text.indexOf(ql)>-1;
+      i.el.style.display=match?'':'none';
+      if(match) hits.push(i.title);
+    });
+    feedback.classList.add('on');
+    if(hits.length===0){
+      feedback.innerHTML='没有找到与「<b>'+q.replace(/</g,'&lt;')+'</b>」匹配的条目。可以换成语区名（如 闽语区）、方言点（如 柘荣）或语料类型（如 连读变调）再试。';
+    }else{
+      feedback.innerHTML='找到 <b>'+hits.length+'</b> 条相关内容：'+hits.slice(0,5).map(function(t){
+        return t.replace(/</g,'&lt;');
+      }).join('、')+(hits.length>5?' 等。':'。');
+    }
+  }
+  searchBtn.addEventListener('click',doSearch);
+  searchInput.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();doSearch();}
+    if(e.key==='Escape'){searchInput.value='';doSearch();}
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"www.heliao88.com",
+  "description":"汉语方言录音、少数民族语言词表、口述史访谈与语音田野笔记的聚合站，按语区、语族和采集年份整理。",
+  "inLanguage":"zh-CN"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"柘荣双城话的阴平到底是 44 还是 21？","acceptedAnswer":{"@type":"Answer","text":"两个都对，看语境。单字念是 44，稳定值，三位听辨人一致率 94%。进入数词加量词结构时前一音节降到 21，42 条对照录音里只有 6 条在句末停顿前保持 44。"}},
+    {"@type":"Question","name":"彝语北部方言词表里的送气符号为什么重要？","acceptedAnswer":{"@type":"Answer","text":"喜德音系 43 个声母中有 11 对送气与不送气对立。漏标送气符号会让两个不同的词写成同一个形式。2026-10-28 的校订改了 87 处国际音标，其中 61 处就是补送气符号。"}},
+    {"@type":"Question","name":"梅县腔口述史为什么有 7 份不能直接引用？","acceptedAnswer":{"@type":"Answer","text":"三类原因：环境噪声超过 45 分贝的 4 份，发音人中途转用普通话超过总时长 20% 的 2 份，关键人名地名无法核实的 1 份。这些访谈仍可作背景线索，但不能当语音样本或词条例证使用。"}},
+    {"@type":"Question","name":"广府片 -k 韵尾在年轻人里真的在消失吗？","acceptedAnswer":{"@type":"Answer","text":"禅城 20 至 28 岁发音人 9 位的保留率是 78%，同地老年组约 93%，差 15 个百分点。广州西关两地差距更小。说消失过头了，说青年组保留率下降更准确，样本只有 9 人。"}},
+    {"@type":"Question","name":"太湖片基频数据能不能用来证明吴语声调在变？","acceptedAnswer":{"@type":"Answer","text":"186 条样本里 55 岁以上占 163 条，青年组只有 23 条。样本年龄结构偏老，能说明老年组的调值现状，不足以推断变化趋势。做纵向推断需要同地、同性别比例、跨年龄段的平衡采样。"}},
+    {"@type":"Question","name":"成都腔儿化词的轻重两读，怎么判断是不是语义对立？","acceptedAnswer":{"@type":"Answer","text":"96 条里 17 条存在语义对立，例如头指头部、头儿指领头人。判断依据是两位听辨人独立标注后是否一致，另有 4 条分歧条目已复核。剩下的 79 条轻重读只影响语气，不改变词义。"}}
+  ]
+}
+</script>
+</body>
+            </html>
