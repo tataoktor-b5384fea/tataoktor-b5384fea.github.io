@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shinaryen视频观看 - 内容聚合与观看指南</title>
+    <meta name="description" content="shinaryen视频观看页面汇聚了创作者shinaryen的系列作品、最新更新动态、分类入口与观看顺序建议，包含深度解析与用户评论，适合希望系统了解其内容风格与更新节奏的观众。">
+    <meta name="keywords" content="shinaryen视频观看">
+    <style>
+        :root {
+            --primary: #1e3a5f;
+            --primary-light: #2c5282;
+            --primary-dark: #0f2740;
+            --accent: #e07a5f;
+            --accent-soft: #f4dcd2;
+            --bg: #f7f5f2;
+            --panel: #ffffff;
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --text-tertiary: #8a919e;
+            --border: #e2e8f0;
+            --line: #eaeef2;
+            --radius-card: 16px;
+            --radius-btn: 10px;
+            --radius-tag: 6px;
+            --shadow-default: 0 6px 18px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.09);
+            --font-sans: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", system-ui, -apple-system, sans-serif;
+            --header-height: 60px;
+            --announce-height: 36px;
+            --scroll-offset: calc(var(--announce-height) + var(--header-height) + 16px);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--scroll-offset);
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.65;
+            font-size: 15px;
+        }
+
+        /* 吸顶公告条 */
+        .announce-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--primary-dark);
+            color: #fff;
+            font-size: 13px;
+            height: var(--announce-height);
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            gap: 32px;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+        }
+        .announce-bar::-webkit-scrollbar { display: none; }
+        .announce-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .announce-tag {
+            background: var(--accent);
+            color: #fff;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+        }
+        .announce-date {
+            color: #a0b8d0;
+            font-size: 12px;
+        }
+
+        /* 吸顶页头 */
+        .site-header {
+            position: sticky;
+            top: var(--announce-height);
+            z-index: 99;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            gap: 28px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: -0.3px;
+            flex-shrink: 0;
+        }
+        .brand svg {
+            width: 32px;
+            height: 32px;
+        }
+        .header-nav {
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            flex: 1;
+        }
+        .header-nav::-webkit-scrollbar { display: none; }
+        .header-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
+            transition: background 0.2s, color 0.2s;
+        }
+        .header-nav a:hover {
+            background: var(--line);
+            color: var(--primary);
+        }
+        .header-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 4px 8px;
+            gap: 4px;
+        }
+        .search-box input {
+            border: none;
+            background: transparent;
+            font-size: 13px;
+            width: 140px;
+            outline: none;
+            font-family: var(--font-sans);
+        }
+        .search-box input::placeholder {
+            color: var(--text-tertiary);
+        }
+        .search-box button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-tertiary);
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            padding: 2px;
+        }
+        .search-box button:hover {
+            color: var(--primary);
+        }
+        .btn-submit {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 6px 16px;
+            border-radius: var(--radius-btn);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+        .btn-submit:hover {
+            background: var(--primary-light);
+        }
+
+        /* 首屏 */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, #2b4f7a 100%);
+            color: #fff;
+            padding: 48px 24px 56px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            right: -80px;
+            top: -80px;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(224, 122, 95, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-inner {
+            max-width: 1320px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+        .hero-content {
+            flex: 1 1 520px;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #cbd5e0;
+            margin-bottom: 16px;
+        }
+        .hero-badge svg {
+            width: 14px;
+            height: 14px;
+        }
+        .hero h1 {
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 14px;
+        }
+        .hero-desc {
+            font-size: 15px;
+            color: #cbd5e0;
+            max-width: 600px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-hero-primary {
+            background: var(--accent);
+            color: #fff;
+            padding: 10px 28px;
+            border-radius: var(--radius-btn);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: background 0.2s, transform 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-hero-primary:hover {
+            background: #c96b50;
+            transform: translateY(-1px);
+        }
+        .btn-hero-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: var(--radius-btn);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-hero-secondary:hover {
+            background: rgba(255, 255, 255, 0.18);
+        }
+        .hero-visual {
+            flex: 0 0 320px;
+            height: 220px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-visual svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 主布局：三栏门户 */
+        .main-container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 32px 24px 48px;
+            display: grid;
+            grid-template-columns: 180px minmax(0, 1fr) 260px;
+            gap: 28px;
+            align-items: start;
+        }
+
+        /* 左侧频道索引 */
+        .channel-sidebar {
+            position: sticky;
+            top: calc(var(--announce-height) + var(--header-height) + 20px);
+            background: var(--panel);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-default);
+            padding: 16px 0;
+            overflow: hidden;
+        }
+        .channel-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-tertiary);
+            padding: 0 16px 10px;
+        }
+        .channel-list {
+            list-style: none;
+        }
+        .channel-list a {
+            display: block;
+            padding: 8px 16px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            border-left: 3px solid transparent;
+            transition: background 0.2s, border-color 0.2s, color 0.2s;
+        }
+        .channel-list a:hover,
+        .channel-list a.active {
+            background: var(--bg);
+            border-left-color: var(--accent);
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        /* 中间主内容 */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+            min-width: 0;
+        }
+
+        /* 右侧辅助栏 */
+        .aux-sidebar {
+            position: sticky;
+            top: calc(var(--announce-height) + var(--header-height) + 20px);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .aux-card {
+            background: var(--panel);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-default);
+            padding: 20px;
+        }
+        .aux-card h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--line);
+        }
+        .hot-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .hot-list li {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .hot-rank {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            background: var(--bg);
+            color: var(--text-tertiary);
+            font-size: 11px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hot-rank.top {
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
+        .update-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .update-list li {
+            font-size: 13px;
+            color: var(--text-secondary);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            line-height: 1.5;
+        }
+        .update-date {
+            font-size: 11px;
+            color: var(--text-tertiary);
+        }
+
+        /* 板块通用 */
+        .section {
+            scroll-margin-top: var(--scroll-offset);
+        }
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+        .section-header h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.3px;
+        }
+        .section-more {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            text-decoration: none;
+        }
+        .section-more:hover {
+            color: var(--accent);
+        }
+
+        /* 概览 */
+        .overview-text {
+            background: var(--panel);
+            border-radius: var(--radius-card);
+            padding: 24px 28px;
+            box-shadow: var(--shadow-default);
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.85;
+        }
+        .overview-text p + p {
+            margin-top: 12px;
+        }
+
+        /* 精选卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 18px;
+        }
+        .content-card {
+            background: var(--panel);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-default);
+            overflow: hidden;
+            transition: box-shadow 0.25s, transform 0.25s;
+            display: flex;
+            flex-direction: column;
+        }
+        .content-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-3px);
+        }
+        .card-img {
+            width: 100%;
+            aspect-ratio: 400/300;
+            object-fit: cover;
+            display: block;
+            background: var(--line);
+        }
+        .card-body {
+            padding: 14px 16px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+        .card-type {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 2px 8px;
+            border-radius: var(--radius-tag);
+            width: fit-content;
+        }
+        .card-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.35;
+        }
+        .card-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            flex: 1;
+        }
+        .card-meta {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            font-size: 11px;
+            color: var(--text-tertiary);
+        }
+        .card-tag {
+            background: var(--bg);
+            padding: 2px 8px;
+            border-radius: var(--radius-tag);
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        /* 最新更新列表 */
+        .update-feed {
+            background: var(--panel);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-default);
+            padding: 4px 0;
+            list-style: none;
+        }
+        .update-feed li {
+            display: flex;
+            gap: 14px;
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--line);
+            align-items: flex-start;
+        }
+        .update-feed li:last-child {
+            border-bottom: none;
+        }
+        .feed-date {
+            flex-shrink: 0;
+            font-size: 12px;
+            color: var(--text-tertiary);
+            min-width: 76px;
+            padding-top: 2px;
+        }
+        .feed-title {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+        .feed-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        /* 分类入口 */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+        }
+        .category-item {
+            background: var(--panel);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-default);
+            padding: 18px 16px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 14px;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+        .category-item:hover {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+        .category-item svg {
+            width: 24px;
+            height: 24px;
+            opacity: 0.7;
+        }
+
+        /* 深度解析 */
+        .deep-dive {
+            background: var(--panel);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-default);
+            padding: 28px 32px;
+        }
+        .deep-dive h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 24px 0 10px;
+        }
+        .deep-dive h3:first-child {
+            margin-top: 0;
+        }
+        .deep-dive p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            margin-bottom: 10px;
+        }
+        .deep-dive ul {
+            margin: 8px 0 16px 20px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        .deep-dive li {
+            margin-bottom: 4px;
+        }
+        .deep-dive blockquote {
+            border-left: 3px solid var(--accent);
+            padding: 8px 16px;
+            background: var(--bg);
+            border-radius: 0 var(--radius-tag) var(--radius-tag) 0;
+            margin: 12px 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* 体验指南步骤 */
+        .guide-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .guide-step {
+            display: flex;
+            gap: 16px;
+            background: var(--panel);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-default);
+            padding: 18px 22px;
+            align-items: flex-start;
+        }
+        .step-num {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .step-content h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .step-content p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* FAQ */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .faq-item {
+            background: var(--panel);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-default);
+            overflow: hidden;
+        }
+        .faq-item summary {
+            padding: 16px 22px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-primary);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-item summary:hover {
+            background: var(--bg);
+        }
+        .faq-item summary::after {
+            content: "+";
+            font-size: 18px;
+            color: var(--text-tertiary);
+            font-weight: 400;
+            transition: transform 0.2s;
+        }
+        .faq-item[open] summary::after {
+            content: "−";
+        }
+        .faq-answer {
+            padding: 0 22px 18px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* 评论 */
+        .comment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 14px;
+        }
+        .comment-card {
+            background: var(--panel);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-default);
+            padding: 16px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .comment-user {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .comment-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .comment-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .comment-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* 资讯 */
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .news-item {
+            background: var(--panel);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-default);
+            padding: 18px 22px;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            transition: box-shadow 0.2s;
+        }
+        .news-item:hover {
+            box-shadow: var(--shadow-hover);
+        }
+        .news-date {
+            flex-shrink: 0;
+            font-size: 12px;
+            color: var(--text-tertiary);
+            padding-top: 2px;
+            min-width: 76px;
+        }
+        .news-content h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .news-content p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* 相关推荐标签 */
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tag-link {
+            background: var(--panel);
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            box-shadow: var(--shadow-default);
+            transition: background 0.2s, color 0.2s;
+        }
+        .tag-link:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* 补充板块：时间线 */
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+        }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 8px;
+            top: 4px;
+            bottom: 4px;
+            width: 2px;
+            background: var(--line);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 18px;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -24px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid var(--panel);
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+        .timeline-date {
+            font-size: 12px;
+            color: var(--text-tertiary);
+            margin-bottom: 2px;
+        }
+        .timeline-title {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+        .timeline-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* 页脚 */
+        .site-footer {
+            background: var(--primary-dark);
+            color: #a0b8d0;
+            padding: 44px 24px 28px;
+            margin-top: 24px;
+        }
+        .footer-inner {
+            max-width: 1320px;
+            margin: 0 auto;
+        }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 36px;
+            margin-bottom: 32px;
+        }
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .footer-brand svg {
+            width: 28px;
+            height: 28px;
+        }
+        .footer-desc {
+            font-size: 13px;
+            line-height: 1.7;
+            color: #8fa8c0;
+            max-width: 300px;
+        }
+        .footer-col h4 {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .footer-col a {
+            display: block;
+            color: #8fa8c0;
+            text-decoration: none;
+            font-size: 13px;
+            padding: 3px 0;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover {
+            color: #fff;
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 12px;
+            color: #6b8299;
+        }
+
+        /* 回到顶部 */
+        .back-top {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-hover);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s, transform 0.25s;
+            z-index: 90;
+        }
+        .back-top.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .back-top:hover {
+            transform: translateY(-2px);
+        }
+
+        /* 响应式 */
+        @media (max-width: 1024px) {
+            .main-container {
+                grid-template-columns: 1fr 260px;
+            }
+            .channel-sidebar {
+                display: none;
+            }
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hero-inner {
+                gap: 28px;
+            }
+            .hero-visual {
+                flex: 0 0 240px;
+                height: 180px;
+            }
+        }
+
+        @media (max-width: 740px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                padding: 20px 16px 40px;
+                gap: 20px;
+            }
+            .aux-sidebar {
+                position: static;
+                order: 2;
+            }
+            .main-content {
+                order: 1;
+            }
+            .hero {
+                padding: 32px 16px 40px;
+            }
+            .hero-visual {
+                display: none;
+            }
+            .header-nav {
+                display: none;
+            }
+            .search-box input {
+                width: 100px;
+            }
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .announce-bar {
+                padding: 0 16px;
+                gap: 20px;
+            }
+            .site-header {
+                padding: 0 16px;
+                gap: 12px;
+            }
+            .deep-dive {
+                padding: 20px 18px;
+            }
+            .news-item {
+                flex-direction: column;
+                gap: 4px;
+            }
+            .comment-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* 焦点样式 */
+        a:focus-visible,
+        button:focus-visible,
+        summary:focus-visible,
+        input:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* 筛选无结果提示 */
+        .no-results {
+            display: none;
+            padding: 20px;
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 14px;
+            background: var(--panel);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-default);
+        }
+        .no-results.show {
+            display: block;
+        }
+    </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+    <!-- 吸顶公告条 -->
+    <div class="announce-bar" role="banner" aria-label="最新动态">
+        <div class="announce-item">
+            <span class="announce-tag">更新</span>
+            <span>《冬日独白》第3集</span>
+            <span class="announce-date">2026-11-07</span>
+        </div>
+        <div class="announce-item">
+            <span class="announce-tag">新增</span>
+            <span>「静物与光」幕后花絮 4 段</span>
+            <span class="announce-date">2026-11-06</span>
+        </div>
+        <div class="announce-item">
+            <span class="announce-tag">榜单</span>
+            <span>本周观看榜：城市夜行 升至第 2</span>
+            <span class="announce-date">2026-11-08</span>
+        </div>
+    </div>
+
+    <!-- 吸顶页头 -->
+    <header class="site-header">
+        <a href="/" class="brand" aria-label="shinaryen视频观看首页">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="6" width="28" height="20" rx="4" fill="currentColor" opacity="0.15"/>
+                <path d="M13 12L21 16L13 20V12Z" fill="currentColor"/>
+                <circle cx="24" cy="10" r="3" fill="#e07a5f"/>
+            </svg>
+            <span>shinaryen视频观看</span>
+        </a>
+        <nav class="header-nav" aria-label="主题导航">
+            <a href="#overview">领域概览</a>
+            <a href="#featured">精选推荐</a>
+            <a href="#latest">最新更新</a>
+            <a href="#categories">分类入口</a>
+            <a href="#deep-dive">深度解析</a>
+            <a href="#guide">观看指南</a>
+            <a href="#faq">常见问答</a>
+            <a href="#comments">用户评论</a>
+            <a href="#news">相关资讯</a>
+            <a href="#timeline">时间线</a>
+        </nav>
+        <div class="header-actions">
+            <div class="search-box">
+                <input type="search" id="searchInput" placeholder="搜索条目…" aria-label="搜索站内条目">
+                <button type="button" id="searchClear" aria-label="清除搜索" style="display:none;">✕</button>
+            </div>
+            <a href="#submit" class="btn-submit">投稿</a>
+        </div>
+    </header>
+
+    <!-- 首屏 -->
+    <section class="hero" id="hero">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    2026年11月8日 内容索引
+                </div>
+                <h1>shinaryen视频观看</h1>
+                <p class="hero-desc">
+                    汇集shinaryen的系列短片、幕后花絮、主题合辑与创作手记，按类型和更新节奏整理，方便按兴趣方向查找具体条目与观看顺序。
+                </p>
+                <div class="hero-actions">
+                    <a href="#featured" class="btn-hero-primary">
+                        浏览精选条目
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href="#guide" class="btn-hero-secondary">
+                        查看观看顺序
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+                <svg viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="20" y="30" width="200" height="120" rx="10" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+                    <rect x="40" y="50" width="160" height="80" rx="6" fill="rgba(255,255,255,0.05)"/>
+                    <circle cx="120" cy="90" r="20" fill="rgba(224,122,95,0.4)"/>
+                    <path d="M114 82L128 90L114 98V82Z" fill="#fff" opacity="0.9"/>
+                    <rect x="60" y="150" width="180" height="12" rx="6" fill="rgba(255,255,255,0.1)"/>
+                    <rect x="60" y="170" width="120" height="10" rx="5" fill="rgba(255,255,255,0.07)"/>
+                    <circle cx="250" cy="60" r="30" fill="rgba(224,122,95,0.12)" stroke="rgba(224,122,95,0.3)" stroke-width="1.5"/>
+                    <path d="M244 52L260 60L244 68V52Z" fill="#e07a5f" opacity="0.8"/>
+                    <rect x="230" y="110" width="70" height="70" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                    <circle cx="265" cy="145" r="16" fill="rgba(255,255,255,0.1)"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主布局：三栏门户 -->
+    <div class="main-container">
+
+        <!-- 左侧频道索引 -->
+        <aside class="channel-sidebar" aria-label="频道索引">
+            <div class="channel-title">频道索引</div>
+            <ul class="channel-list">
+                <li><a href="#overview">领域概览</a></li>
+                <li><a href="#featured" class="active">精选内容</a></li>
+                <li><a href="#latest">最新更新</a></li>
+                <li><a href="#categories">分类入口</a></li>
+                <li><a href="#deep-dive">深度解析</a></li>
+                <li><a href="#guide">体验指南</a></li>
+                <li><a href="#faq">常见问答</a></li>
+                <li><a href="#comments">用户评论</a></li>
+                <li><a href="#news">相关资讯</a></li>
+                <li><a href="#recommend">相关推荐</a></li>
+                <li><a href="#timeline">条目时间线</a></li>
+            </ul>
+        </aside>
+
+        <!-- 中间主内容 -->
+        <main class="main-content">
+
+            <!-- 1. 主题领域概览 -->
+            <section class="section" id="overview">
+                <div class="section-header">
+                    <h2>创作领域与内容方向</h2>
+                </div>
+                <div class="overview-text">
+                    <p>
+                        shinaryen的创作以生活观察与情绪写实为主线，涵盖「城市夜行」「静物与光」「冬日独白」等系列。短片时长多集中在3—8分钟，采用固定机位与自然光拍摄，在生活区与视频平台上积累了一批关注者。截至目前可查的公开作品约47条，包含正片、番外与幕后花絮。
+                    </p>
+                    <p>
+                        内容方向上可以分成三类：一是以城市街道为背景的漫游短片，注重环境音与步速节奏；二是室内静物特写，强调光线变化与物件质感；三是带旁白的生活片段，多由创作者本人撰写文稿。2026年10月下旬发布的「静物与光」第三辑尝试了双屏构图，在粉丝讨论区引发了对画面比例和观看设备适配的讨论。
+                    </p>
+                    <p>
+                        更新节奏并不固定，10月中旬到11月初共发布4条正片和2条花絮。较早的「城市夜行」系列已完结，共9集，适合按顺序连续观看；「冬日独白」仍在更新中，目前放出3集。部分内容有观看门槛提示，涉及夜间场景和较长的固定镜头，对习惯快节奏剪辑的观众来说需要适应。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 2. 精选内容推荐 -->
+            <section class="section" id="featured">
+                <div class="section-header">
+                    <h2>精选条目与看点</h2>
+                    <a href="#latest" class="section-more">查看全部更新 →</a>
+                </div>
+                <div class="card-grid" id="featuredGrid">
+                    <article class="content-card">
+                        <img class="card-img" src="https://picsum.photos/seed/shina_city1/400/300" alt="城市夜行系列封面：夜晚街道与路灯" width="400" height="300" loading="lazy">
+                        <div class="card-body">
+                            <span class="card-type">系列正片</span>
+                            <h3 class="card-title">城市夜行·第9集「末班车之后」</h3>
+                            <p class="card-desc">末班地铁后的步行路线，从站台到便利店再到天桥，全程一镜到底，环境音未做降噪处理。</p>
+                            <div class="card-meta">
+                                <span class="card-tag">一镜到底</span>
+                                <span class="card-tag">环境音</span>
+                                <span>热度 9.2</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="content-card">
+                        <img class="card-img" src="https://picsum.photos/seed/shina_still2/400/300" alt="静物与光系列封面：窗边玻璃杯与光影" width="400" height="300" loading="lazy">
+                        <div class="card-body">
+                            <span class="card-type">静物短片</span>
+                            <h3 class="card-title">静物与光·第三辑「下午四点的窗台」</h3>
+                            <p class="card-desc">双屏构图实验，左侧固定窗台，右侧跟拍光线移动，适合在大屏设备上观看。</p>
+                            <div class="card-meta">
+                                <span class="card-tag">双屏实验</span>
+                                <span class="card-tag">自然光</span>
+                                <span>评分 8.7</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="content-card">
+                        <img class="card-img" src="https://picsum.photos/seed/shina_winter3/400/300" alt="冬日独白系列封面：雪地脚印与枯枝" width="400" height="300" loading="lazy">
+                        <div class="card-body">
+                            <span class="card-type">连载更新</span>
+                            <h3 class="card-title">冬日独白·第3集「雪停之后」</h3>
+                            <p class="card-desc">旁白比重增加，约40%的时长是固定镜头下的雪后街景，节奏比前两集慢。</p>
+                            <div class="card-meta">
+                                <span class="card-tag">旁白</span>
+                                <span class="card-tag">雪景</span>
+                                <span>更新于 11-07</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="content-card">
+                        <img class="card-img" src="https://picsum.photos/seed/shina_bts4/400/300" alt="幕后花絮封面：摄像机与分镜稿" width="400" height="300" loading="lazy">
+                        <div class="card-body">
+                            <span class="card-type">幕后花絮</span>
+                            <h3 class="card-title">「静物与光」拍摄手记：双屏怎么对齐</h3>
+                            <p class="card-desc">4段花絮拼成，展示两台机器如何同步时间码，以及后期对齐时的偏移修正。</p>
+                            <div class="card-meta">
+                                <span class="card-tag">拍摄手记</span>
+                                <span class="card-tag">时间码</span>
+                                <span>4段 / 12分钟</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="content-card">
+                        <img class="card-img" src="https://picsum.photos/seed/shina_essay5/400/300" alt="创作手记封面：笔记本与钢笔" width="400" height="300" loading="lazy">
+                        <div class="card-body">
+                            <span class="card-type">文字手记</span>
+                            <h3 class="card-title">关于「城市夜行」收尾的三段笔记</h3>
+                            <p class="card-desc">写了第9集的路线选择原因，以及为什么放弃后期配乐、保留地铁报站声。</p>
+                            <div class="card-meta">
+                                <span class="card-tag">创作谈</span>
+                                <span class="card-tag">配乐取舍</span>
+                                <span>阅读 2.1k</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="content-card">
+                        <img class="card-img" src="https://picsum.photos/seed/shina_qa6/400/300" alt="问答现场封面：观众留言与回复" width="400" height="300" loading="lazy">
+                        <div class="card-body">
+                            <span class="card-type">互动问答</span>
+                            <h3 class="card-title">10月观众提问整理：画幅、字幕与设备</h3>
+                            <p class="card-desc">集中回复了「冬日独白」画幅比例、外挂字幕文件获取方式等9个高频问题。</p>
+                            <div class="card-meta">
+                                <span class="card-tag">互动</span>
+                                <span class="card-tag">画幅</span>
+                                <span>9个问题</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="no-results" id="noResults">没有找到匹配的条目，试试其他关键词。</div>
+            </section>
+
+            <!-- 3. 最新更新 -->
+            <section class="section" id="latest">
+                <div class="section-header">
+                    <h2>近期更新与发布动态</h2>
+                </div>
+                <ul class="update-feed">
+                    <li>
+                        <span class="feed-date">11-07</span>
+                        <div>
+                            <div class="feed-title">冬日独白·第3集「雪停之后」</div>
+                            <div class="feed-desc">正片上线，时长7分12秒。旁白由创作者本人录制，未做变声处理。</div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="feed-date">11-06</span>
+                        <div>
+                            <div class="feed-title">「静物与光」幕后花絮 4 段</div>
+                            <div class="feed-desc">包含双屏对齐、时间码同步、灯光布置和后期偏移修正四个片段。</div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="feed-date">11-03</span>
+                        <div>
+                            <div class="feed-title">城市夜行·第9集导演评论音轨</div>
+                            <div class="feed-desc">单独发布的音轨文件，时长与正片一致，可在播放器外挂加载。</div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="feed-date">10-30</span>
+                        <div>
+                            <div class="feed-title">文字手记：关于「城市夜行」收尾</div>
+                            <div class="feed-desc">发布在创作笔记栏目，约1800字，附路线地图截图。</div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="feed-date">10-28</span>
+                        <div>
+                            <div class="feed-title">冬日独白·第2集「楼道灯」</div>
+                            <div class="feed-desc">正片上线，时长5分48秒。本集开始使用新的收音设备。</div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="feed-date">10-25</span>
+                        <div>
+                            <div class="feed-title">10月观众提问整理</div>
+                            <div class="feed-desc">回复9个问题，涉及画幅比例、字幕格式和移动端观看适配。</div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="feed-date">10-21</span>
+                        <div>
+                            <div class="feed-title">静物与光·第三辑「下午四点的窗台」</div>
+                            <div class="feed-desc">双屏构图实验正片上线，时长6分03秒，提供横屏与竖屏两个版本。</div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="feed-date">10-18</span>
+                        <div>
+                            <div class="feed-title">冬日独白·第1集「第一场雪」</div>
+                            <div class="feed-desc">新系列开篇，时长4分56秒，拍摄于10月15日的初雪。</div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- 4. 分类入口 -->
+            <section class="section" id="categories">
+                <div class="section-header">
+                    <h2>按类型查找条目</h2>
+                </div>
+                <div class="category-grid">
+                    <a href="#featured" class="category-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3V9z" fill="currentColor" stroke="none"/></svg>
+                        系列正片
+                    </a>
+                    <a href="#featured" class="category-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 2.5"/></svg>
+                        幕后花絮
+                    </a>
+                    <a href="#featured" class="category-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 19V5a2 2 0 012-2h12a2 2 0 012 2v14"/><path d="M4 19h16"/><path d="M8 7h8M8 11h6"/></svg>
+                        创作手记
+                    </a>
+                    <a href="#featured" class="category-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 10h8M8 14h5"/></svg>
+                        旁白短片
+                    </a>
+                    <a href="#featured" class="category-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v18M3 12h18"/></svg>
+                        双屏实验
+                    </a>
+                    <a href="#featured" class="category-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 6v2M12 16v2M6 12h2M16 12h2"/></svg>
+                        城市漫游
+                    </a>
+                    <a href="#featured" class="category-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 12l2 2 4-4"/></svg>
+                        完结系列
+                    </a>
+                    <a href="#featured" class="category-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2l2.4 6.2H21l-5.2 4 2 6.4L12 15l-5.8 3.6 2-6.4L3 8.2h6.6L12 2z"/></svg>
+                        连载中
+                    </a>
+                </div>
+            </section>
+
+            <!-- 5. 深度解析 -->
+            <section class="section" id="deep-dive">
+                <div class="section-header">
+                    <h2>类型差异与观看判断</h2>
+                </div>
+                <div class="deep-dive">
+                    <h3>正片与花絮的信息层级不同</h3>
+                    <p>
+                        正片提供的是完成后的观看体验，花絮提供的是制作过程的信息。以「静物与光」第三辑为例，正片6分03秒，两条平行画面通过时间码对齐；同期的4段花絮总计12分钟，其中第2段清楚展示了两台机器同步时间码的步骤——先在A机按下录制，3秒后B机跟进，后期将B机整体前移2秒12帧完成对齐。这个细节在正片里看不到，但对理解双屏构图的精度有帮助。
+                    </p>
+                    <p>
+                        判断一个条目该看正片还是先看花絮，取决于观众的目标。如果只是感受画面节奏，正片足够；如果要分析构图方法或拍摄条件，花絮的参考价值更高。花絮里出现的设备型号、帧率设置和时间码偏移量，在创作者10月25日的问答整理里也有对应说明，可以交叉核对。
+                    </p>
+
+                    <h3>连载系列的进度判断</h3>
+                    <p>
+                        「冬日独白」目前更新到第3集，按创作者的发布节奏推算，剩余集数尚不明确。已公开的信息里，第1集时长4分56秒，第2集5分48秒，第3集7分12秒，时长逐集增加。旁白占比也从第1集的约15%上升到第3集的约40%。如果观众对旁白较多的形式不感兴趣，可以在第2集之后暂停跟进。
+                    </p>
+                    <ul>
+                        <li>第1集「第一场雪」：实拍环境音为主，旁白仅开头两句</li>
+                        <li>第2集「楼道灯」：更换收音设备，人声清晰度提升</li>
+                        <li>第3集「雪停之后」：旁白段落增至约2分50秒</li>
+                    </ul>
+                    <p>
+                        另一个可核对的指标是画面比例。第1集和第2集为16:9，第3集在部分平台提供2.35:1的遮幅版本，外挂字幕文件需要对应调整垂直位置。创作者在问答里提到过这一点，但没有在正片描述中反复标注。
+                    </p>
+
+                    <h3>双屏构图的实际观看条件</h3>
+                    <p>
+                        「静物与光」第三辑提供了横屏和竖屏两个版本，区别在于双屏的排列方向。横屏版左右并排，单屏有效分辨率约为960×1080；竖屏版上下堆叠，单屏约为1080×480。在手机竖屏模式下，横屏版需要旋转设备才能看清细节，否则单屏宽度不足。创作者在花絮第4段里用了一个对比画面：同一帧在6.1英寸手机和13英寸平板上的实际显示尺寸相差约2.7倍。
+                    </p>
+                    <blockquote>
+                        一条可被反驳的判断：双屏版本在手机上的观看体验不如平板或桌面显示器，竖屏版虽然适配了手机方向，但单屏高度被压缩后，窗台部分的细节损失比横屏版更明显。
+                    </blockquote>
+                    <p>
+                        这个判断的依据是画面比例换算，不是主观偏好。如果观众主要用手机观看，横屏版加旋转可能是更合理的选择；如果以平板或显示器为主，竖屏版和横屏版差异不大。花絮里没有提到电视端的适配情况，这部分信息目前缺失。
+                    </p>
+
+                    <h3>完结系列与连载系列的投入策略</h3>
+                    <p>
+                        「城市夜行」共9集，总时长约68分钟，适合一次连续看完。系列内部有明确的路线顺序：第1集从东往西，第9集从西往东回程，中间各集按地理节点推进。按顺序观看能获得路线上的对应感，跳集观看则主要损失的是空间连续性，单集内容仍然完整。
+                    </p>
+                    <p>
+                        「冬日独白」作为连载，单集之间的独立性更强，每集围绕一个具体场景展开——初雪、楼道灯、雪停。目前没有发现必须按顺序观看才能理解的伏笔，但第3集的旁白里提到了第1集的一个画面，属于轻量呼应。如果时间有限，从第2集或第3集开始看，再回头补第1集，信息损失不大。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 6. 体验指南 -->
+            <section class="section" id="guide">
+                <div class="section-header">
+                    <h2>观看顺序与判断依据</h2>
+                </div>
+                <div class="guide-steps">
+                    <div class="guide-step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <h4>先确定观看设备</h4>
+                            <p>手机竖屏优先看「城市夜行」和「冬日独白」的横屏版；平板或显示器可以尝试「静物与光」的双屏版本。设备决定画幅选择，画幅决定细节保留程度。</p>
+                        </div>
+                    </div>
+                    <div class="guide-step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <h4>按系列完整度排序</h4>
+                            <p>「城市夜行」已完结，适合连续看完，总时长约68分钟；「冬日独白」更新中，建议先看已放出的3集，再决定是否追更。连载系列的等待成本需要提前考虑。</p>
+                        </div>
+                    </div>
+                    <div class="guide-step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <h4>用花絮判断制作精度</h4>
+                            <p>如果对拍摄方法感兴趣，先看「静物与光」花絮第2段和第4段，再回到正片对照时间码和画面偏移。花絮里的设备型号和帧率设置是可查的具体信息，比正片描述更有参考价值。</p>
+                        </div>
+                    </div>
+                    <div class="guide-step">
+                        <div class="step-num">4</div>
+                        <div class="step-content">
+                            <h4>比较同类型条目的时长与旁白占比</h4>
+                            <p>「冬日独白」三集的旁白占比从15%递增到40%，时长从4分56秒递增到7分12秒。偏好画面多于人声的观众，第1集更接近；偏好文字叙述的，第3集更合适。</p>
+                        </div>
+                    </div>
+                    <div class="guide-step">
+                        <div class="step-num">5</div>
+                        <div class="step-content">
+                            <h4>参考更新频率决定是否追更</h4>
+                            <p>10月18日到11月7日共发布3集正片，平均间隔约7天。如果无法接受周更节奏，可以等「冬日独白」全部放出后再集中观看。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. FAQ -->
+            <section class="section" id="faq">
+                <div class="section-header">
+                    <h2>常见问题</h2>
+                </div>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>「城市夜行」系列一共几集，需要按顺序看吗？</summary>
+                        <div class="faq-answer">
+                            共9集，总时长约68分钟。按顺序观看能获得路线从东到西再回程的空间连续性，跳集观看单集内容仍然完整，主要损失的是地理节点之间的对应感。
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>「静物与光」第三辑的双屏版本在手机上怎么看？</summary>
+                        <div class="faq-answer">
+                            横屏版左右并排，手机竖屏需要旋转设备；竖屏版上下堆叠，单屏高度约480像素，窗台细节损耗比横屏版更明显。主要用手机观看的话，横屏版加旋转是更合理的选择。
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>「冬日独白」第3集的旁白为什么比前两集多？</summary>
+                        <div class="faq-answer">
+                            第3集旁白段落约2分50秒，占全片约40%，前两集分别为15%和25%左右。创作者在10月25日的问答整理里提到，第3集拍摄时遇到连续阴天，画面素材不足以支撑纯画面叙事，因此增加了旁白比重。
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>花絮和正片应该先看哪个？</summary>
+                        <div class="faq-answer">
+                            取决于目标。感受画面节奏先看正片；分析构图方法和拍摄条件，先看花絮第2段（时间码同步）和第4段（设备显示对比），再回到正片对照，信息更完整。
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>外挂字幕文件在哪里获取，需要注意什么？</summary>
+                        <div class="faq-answer">
+                            字幕文件随正片发布时一并提供，格式为SRT。需要注意「冬日独白」第3集有16:9和2.35:1两个画面版本，字幕的垂直位置需要对应调整，用错版本会出现字幕偏移。
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>「城市夜行」第9集为什么没有配乐？</summary>
+                        <div class="faq-answer">
+                            第9集保留了地铁报站、便利店门铃和天桥上的风声，没有添加后期配乐。创作者在10月30日的手记里写到，试过三版配乐，最终觉得与一镜到底的路线节奏不匹配，所以放弃。
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <!-- 8. 用户评论 -->
+            <section class="section" id="comments">
+                <div class="section-header">
+                    <h2>观众讨论</h2>
+                </div>
+                <div class="comment-grid">
+                    <div class="comment-card">
+                        <div class="comment-user">
+                            <div class="comment-avatar">路</div>
+                            <span class="comment-name">路灯下的猫</span>
+                        </div>
+                        <p class="comment-text">第9集末班车那段，地铁报站声没消掉真的加分，比配乐版本舒服。</p>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-user">
+                            <div class="comment-avatar">雪</div>
+                            <span class="comment-name">雪落无声</span>
+                        </div>
+                        <p class="comment-text">冬日独白第3集旁白有点多，个人更喜欢第1集那种几乎只有环境音的。不过雪景拍得确实好。</p>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-user">
+                            <div class="comment-avatar">双</div>
+                            <span class="comment-name">双屏用户</span>
+                        </div>
+                        <p class="comment-text">静物与光第三辑用平板看的，双屏效果比手机好太多。手机上竖屏版下面那块画面太小了，窗台细节基本看不清。</p>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-user">
+                            <div class="comment-avatar">时</div>
+                            <span class="comment-name">时间码爱好者</span>
+                        </div>
+                        <p class="comment-text">花絮第2段讲时间码对齐，前移2秒12帧这个数据很具体，比看正片有用。</p>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-user">
+                            <div class="comment-avatar">冬</div>
+                            <span class="comment-name">冬眠中</span>
+                        </div>
+                        <p class="comment-text">更新太慢了，10月18号到11月7号才三集，等得有点着急。</p>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-user">
+                            <div class="comment-avatar">手</div>
+                            <span class="comment-name">手记读者</span>
+                        </div>
+                        <p class="comment-text">10月30号那篇手记里附的路线地图截图，和正片第9集的实际路线基本对得上，细节控表示满意。</p>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-user">
+                            <div class="comment-avatar">提</div>
+                            <span class="comment-name">提问的人</span>
+                        </div>
+                        <p class="comment-text">外挂字幕的垂直偏移问题折腾了我半小时，后来发现是下错了画幅版本。建议下载前先确认画面比例。</p>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-user">
+                            <div class="comment-avatar">路</div>
+                            <span class="comment-name">路过看看</span>
+                        </div>
+                        <p class="comment-text">之前没看过这个作者，偶然点开城市夜行第1集，一镜到底走完一条街，居然看完了。节奏其实不慢。</p>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-user">
+                            <div class="comment-avatar">音</div>
+                            <span class="comment-name">音轨收藏</span>
+                        </div>
+                        <p class="comment-text">第9集的导演评论音轨单独发了个文件，这个做法挺少见，但确实方便。</p>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-user">
+                            <div class="comment-avatar">旁</div>
+                            <span class="comment-name">旁白偏好者</span>
+                        </div>
+                        <p class="comment-text">冬日独白第3集旁白增加我反而更喜欢，前两集画面很好但信息量偏少，第3集的文字让内容更充实。</p>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-user">
+                            <div class="comment-avatar">设</div>
+                            <span class="comment-name">设备党</span>
+                        </div>
+                        <p class="comment-text">花絮里提到的那台收音设备，我查了一下是2025年的型号，比预期旧，但效果确实可以。</p>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-user">
+                            <div class="comment-avatar">随</div>
+                            <span class="comment-name">随便看看</span>
+                        </div>
+                        <p class="comment-text">说真的，城市夜行第9集那个一镜到底，中间走了快七分钟，我居然没快进。但是第6集就有点拖，走到天桥那段反复回头，不知道是不是故意的。</p>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-user">
+                            <div class="comment-avatar">画</div>
+                            <span class="comment-name">画幅纠结</span>
+                        </div>
+                        <p class="comment-text">2.35:1版本在平板上有黑边，画面其实变小了，不如16:9直接看。双屏那个也是，竖屏版在手机上真的不行。</p>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-user">
+                            <div class="comment-avatar">新</div>
+                            <span class="comment-name">新来的</span>
+                        </div>
+                        <p class="comment-text">有没有人觉得第2集的楼道灯场景太暗了，调高亮度才看清。可能是我屏幕问题。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 9. 相关资讯 -->
+            <section class="section" id="news">
+                <div class="section-header">
+                    <h2>近期动态与发布记录</h2>
+                </div>
+                <div class="news-list">
+                    <article class="news-item">
+                        <span class="news-date">2026-11-07</span>
+                        <div class="news-content">
+                            <h4>「冬日独白」第3集上线，旁白占比升至40%</h4>
+                            <p>正片时长7分12秒，为系列最长。创作者在发布说明中提到，本集拍摄期间连续阴天，画面素材不足以支撑纯画面叙事，因此增加了旁白段落。</p>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <span class="news-date">2026-11-06</span>
+                        <div class="news-content">
+                            <h4>「静物与光」幕后花絮放出4段，含设备对比画面</h4>
+                            <p>第4段花絮用6.1英寸手机和13英寸平板做了同帧显示对比，实际显示尺寸相差约2.7倍。该对比画面未出现在正片中。</p>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <span class="news-date">2026-11-03</span>
+                        <div class="news-content">
+                            <h4>「城市夜行」第9集导演评论音轨单独发布</h4>
+                            <p>音轨时长与正片一致，可在播放器外挂加载。内容涉及第9集路线选择原因和放弃后期配乐的具体考虑，未在正片描述中重复。</p>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <span class="news-date">2026-10-30</span>
+                        <div class="news-content">
+                            <h4>创作手记更新：城市夜行收尾的三段笔记</h4>
+                            <p>约1800字，附路线地图截图。手记中提到试过三版配乐，最终因与一镜到底的节奏不匹配而放弃。</p>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <span class="news-date">2026-10-28</span>
+                        <div class="news-content">
+                            <h4>「冬日独白」第2集更换收音设备，人声清晰度提升</h4>
+                            <p>第2集时长5分48秒，旁白占比约25%。设备型号未在正片说明中标注，花絮第1段有短暂展示。</p>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <span class="news-date">2026-10-25</span>
+                        <div class="news-content">
+                            <h4>10月观众提问整理发布，回复9个高频问题</h4>
+                            <p>问题涉及画幅比例选择、外挂字幕SRT文件的垂直位置调整、移动端观看适配等。其中字幕偏移问题被单独列出。</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- 10. 相关推荐 -->
+            <section class="section" id="recommend">
+                <div class="section-header">
+                    <h2>按方向索引</h2>
+                </div>
+                <div class="tag-cloud">
+                    <a href="#featured" class="tag-link">城市夜行第9集</a>
+                    <a href="#featured" class="tag-link">静物与光第三辑</a>
+                    <a href="#featured" class="tag-link">冬日独白第3集</a>
+                    <a href="#featured" class="tag-link">双屏构图花絮</a>
+                    <a href="#featured" class="tag-link">时间码对齐</a>
+                    <a href="#featured" class="tag-link">导演评论音轨</a>
+                    <a href="#featured" class="tag-link">外挂字幕SRT</a>
+                    <a href="#featured" class="tag-link">一镜到底路线</a>
+                </div>
+            </section>
+
+            <!-- 11. 补充板块：条目时间线 -->
+            <section class="section" id="timeline">
+                <div class="section-header">
+                    <h2>发布与更新记录</h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2026-11-07</div>
+                        <div class="timeline-title">冬日独白·第3集「雪停之后」</div>
+                        <div class="timeline-desc">正片上线，7分12秒，旁白占比40%</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2026-11-06</div>
+                        <div class="timeline-title">「静物与光」幕后花絮 4 段</div>
+                        <div class="timeline-desc">含设备对比与时间码同步片段，总计12分钟</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2026-11-03</div>
+                        <div class="timeline-title">城市夜行·第9集导演评论音轨</div>
+                        <div class="timeline-desc">单独音轨文件，与正片等长</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2026-10-30</div>
+                        <div class="timeline-title">创作手记：城市夜行收尾</div>
+                        <div class="timeline-desc">约1800字，附路线地图截图</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2026-10-28</div>
+                        <div class="timeline-title">冬日独白·第2集「楼道灯」</div>
+                        <div class="timeline-desc">正片上线，5分48秒，更换收音设备</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2026-10-25</div>
+                        <div class="timeline-title">10月观众提问整理</div>
+                        <div class="timeline-desc">回复9个问题，涉及画幅与字幕</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2026-10-21</div>
+                        <div class="timeline-title">静物与光·第三辑「下午四点的窗台」</div>
+                        <div class="timeline-desc">双屏构图实验正片，6分03秒</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2026-10-18</div>
+                        <div class="timeline-title">冬日独白·第1集「第一场雪」</div>
+                        <div class="timeline-desc">新系列开篇，4分56秒</div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- 右侧辅助栏 -->
+        <aside class="aux-sidebar">
+            <div class="aux-card">
+                <h3>本周观看热度</h3>
+                <ul class="hot-list">
+                    <li><span class="hot-rank top">1</span> 城市夜行·第9集「末班车之后」</li>
+                    <li><span class="hot-rank top">2</span> 静物与光·第三辑「下午四点的窗台」</li>
+                    <li><span class="hot-rank top">3</span> 冬日独白·第3集「雪停之后」</li>
+                    <li><span class="hot-rank">4</span> 城市夜行·第6集「天桥反复」</li>
+                    <li><span class="hot-rank">5</span> 静物与光·拍摄手记花絮</li>
+                    <li><span class="hot-rank">6</span> 冬日独白·第1集「第一场雪」</li>
+                </ul>
+            </div>
+            <div class="aux-card">
+                <h3>近期更新</h3>
+                <ul class="update-list">
+                    <li>
+                        <span>冬日独白·第3集正片</span>
+                        <span class="update-date">2026-11-07</span>
+                    </li>
+                    <li>
+                        <span>静物与光花絮4段</span>
+                        <span class="update-date">2026-11-06</span>
+                    </li>
+                    <li>
+                        <span>城市夜行导演评论音轨</span>
+                        <span class="update-date">2026-11-03</span>
+                    </li>
+                    <li>
+                        <span>创作手记：城市夜行收尾</span>
+                        <span class="update-date">2026-10-30</span>
+                    </li>
+                    <li>
+                        <span>冬日独白·第2集</span>
+                        <span class="update-date">2026-10-28</span>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div>
+                    <div class="footer-brand">
+                        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <rect x="2" y="6" width="28" height="20" rx="4" fill="rgba(255,255,255,0.15)"/>
+                            <path d="M13 12L21 16L13 20V12Z" fill="#fff"/>
+                            <circle cx="24" cy="10" r="3" fill="#e07a5f"/>
+                        </svg>
+                        <span>shinaryen视频观看</span>
+                    </div>
+                    <p class="footer-desc">
+                        索引内容跨度从2025年早期实验短片到2026年11月最新更新，包含正片、花絮、创作手记与互动问答四类条目。更新节奏不固定，2026年10月为发布高峰。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>内容导航</h4>
+                    <a href="#featured">精选条目</a>
+                    <a href="#latest">最新更新</a>
+                    <a href="#deep-dive">深度解析</a>
+                    <a href="#guide">观看指南</a>
+                </div>
+                <div class="footer-col">
+                    <h4>条目类型</h4>
+                    <a href="#categories">系列正片</a>
+                    <a href="#categories">幕后花絮</a>
+                    <a href="#categories">创作手记</a>
+                    <a href="#categories">互动问答</a>
+                </div>
+                <div class="footer-col">
+                    <h4>参与</h4>
+                    <a href="#submit">投稿入口</a>
+                    <a href="#comments">观众讨论</a>
+                    <a href="#faq">常见问题</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>页面内容基于公开条目整理，示例数据仅用于索引展示。最后更新：2026年11月8日</span>
+                <span>不设官方授权声明，版权归创作者所有</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部 -->
+    <button class="back-top" id="backTop" aria-label="回到顶部" title="回到顶部">
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 12V4M4 8l4-4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <script>
+        (function() {
+            // 搜索筛选
+            const searchInput = document.getElementById('searchInput');
+            const searchClear = document.getElementById('searchClear');
+            const featuredGrid = document.getElementById('featuredGrid');
+            const noResults = document.getElementById('noResults');
+            const cards = featuredGrid ? Array.from(featuredGrid.querySelectorAll('.content-card')) : [];
+
+            function filterCards() {
+                const q = searchInput.value.trim().toLowerCase();
+                let visibleCount = 0;
+                cards.forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    if (!q || text.includes(q)) {
+                        card.style.display = '';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                if (visibleCount === 0) {
+                    noResults.classList.add('show');
+                } else {
+                    noResults.classList.remove('show');
+                }
+                searchClear.style.display = q ? 'flex' : 'none';
+            }
+
+            if (searchInput) {
+                searchInput.addEventListener('input', filterCards);
+            }
+            if (searchClear) {
+                searchClear.addEventListener('click', function() {
+                    searchInput.value = '';
+                    filterCards();
+                    searchInput.focus();
+                });
+            }
+
+            // 回到顶部
+            const backTop = document.getElementById('backTop');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > window.innerHeight * 0.8) {
+                    backTop.classList.add('show');
+                } else {
+                    backTop.classList.remove('show');
+                }
+            }, { passive: true });
+
+            backTop.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // 侧栏频道滚动高亮
+            const sections = document.querySelectorAll('.section[id]');
+            const channelLinks = document.querySelectorAll('.channel-list a');
+            if (sections.length && channelLinks.length) {
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            const id = entry.target.getAttribute('id');
+                            channelLinks.forEach(function(link) {
+                                link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                            });
+                        }
+                    });
+                }, { rootMargin: '-30% 0px -60% 0px' });
+                sections.forEach(function(section) { observer.observe(section); });
+            }
+        })();
+    </script>
+
+</body>
+                                                                                                         </html>
