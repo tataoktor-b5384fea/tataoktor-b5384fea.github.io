@@ -1,0 +1,2246 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>黑料网社 - 网络争议内容与信息核查</title>
+  <meta name="description" content="黑料网社是一个聚焦网络争议内容、翻车事件与信息核查的垂直聚合站。汇集近30天热搜条目、网友讨论、时间线与可信度判断，适合关注舆论反转与事实核验的读者。">
+  <meta name="keywords" content="黑料网社">
+  <style>
+    /* ---------- 设计系统 ---------- */
+    :root {
+      --primary: #8b1e2e;
+      --primary-light: #b13e4f;
+      --primary-dark: #5a0f1c;
+      --bg: #f7f4f0;
+      --surface: #ffffff;
+      --surface-alt: #f2ede8;
+      --text-primary: #1e1a18;
+      --text-secondary: #5e5652;
+      --text-tertiary: #8a7f7a;
+      --border: #e2dbd5;
+      --radius-card: 14px;
+      --radius-btn: 8px;
+      --radius-tag: 6px;
+      --shadow-default: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.08);
+      --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans SC", "Microsoft YaHei", sans-serif;
+      --header-height: 64px;
+      --announce-height: 36px;
+      --sticky-offset: calc(var(--announce-height) + var(--header-height));
+      --container-max: 1360px;
+      --grid-gap: 28px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--sticky-offset);
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 吸顶公告条 */
+    .announce-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--primary-dark);
+      color: #f0e8e4;
+      height: var(--announce-height);
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      overflow: hidden;
+    }
+
+    .announce-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      width: 100%;
+      white-space: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .announce-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .announce-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .announce-date {
+      color: #d4b8b0;
+      font-weight: 500;
+    }
+
+    .announce-tag {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 1px 8px;
+      border-radius: 3px;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+    }
+
+    .announce-brand {
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #f5d5cd;
+      margin-right: 4px;
+    }
+
+    /* 吸顶页头 */
+    .site-header {
+      position: sticky;
+      top: var(--announce-height);
+      z-index: 99;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      height: var(--header-height);
+    }
+
+    .header-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      gap: 32px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .logo-svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 1px;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 4px;
+      flex: 1;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .header-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .header-nav a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 14px;
+      padding: 6px 12px;
+      border-radius: var(--radius-btn);
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .header-nav a:hover,
+    .header-nav a:focus-visible {
+      background: var(--surface-alt);
+      color: var(--primary);
+      outline: none;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: var(--surface-alt);
+      border-radius: 20px;
+      padding: 4px 12px;
+      border: 1px solid transparent;
+      transition: border 0.2s;
+    }
+
+    .search-box:focus-within {
+      border-color: var(--primary-light);
+      background: #fff;
+    }
+
+    .search-box input {
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      padding: 4px 0;
+      width: 140px;
+      outline: none;
+      color: var(--text-primary);
+    }
+
+    .search-box input::placeholder {
+      color: var(--text-tertiary);
+    }
+
+    .search-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-tertiary);
+      padding: 2px;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-btn:hover {
+      color: var(--primary);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-btn);
+      padding: 6px 10px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    /* 移动端抽屉 */
+    .drawer-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 200;
+    }
+
+    .drawer-overlay.active {
+      display: block;
+    }
+
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: -280px;
+      width: 280px;
+      height: 100vh;
+      background: var(--surface);
+      z-index: 201;
+      transition: right 0.3s ease;
+      padding: 24px;
+      overflow-y: auto;
+      box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-drawer.open {
+      right: 0;
+    }
+
+    .drawer-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      display: block;
+      margin-left: auto;
+    }
+
+    .drawer-nav a {
+      display: block;
+      text-decoration: none;
+      color: var(--text-primary);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 15px;
+    }
+
+    .drawer-nav a:hover {
+      color: var(--primary);
+    }
+
+    /* 主容器 */
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* 三栏布局 */
+    .three-col-layout {
+      display: grid;
+      grid-template-columns: 180px 1fr 260px;
+      gap: var(--grid-gap);
+      padding: 32px 0 64px;
+    }
+
+    /* 首屏 */
+    .hero {
+      background: linear-gradient(135deg, #1e1a18 0%, #3d1f24 50%, #5a0f1c 100%);
+      border-radius: 20px;
+      padding: 48px 40px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -40px;
+      top: -40px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(177, 62, 79, 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: #d4c8c4;
+      line-height: 1.7;
+      margin-bottom: 28px;
+      max-width: 600px;
+    }
+
+    .hero-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .hero-tag {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      color: #e8ddd8;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .hero-tag:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .hero-svg {
+      position: absolute;
+      right: 40px;
+      bottom: 20px;
+      width: 200px;
+      height: 200px;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    /* 侧栏通用 */
+    .sidebar {
+      position: sticky;
+      top: calc(var(--sticky-offset) + 20px);
+      align-self: start;
+    }
+
+    .sidebar-card {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 20px;
+      box-shadow: var(--shadow-default);
+      margin-bottom: 20px;
+    }
+
+    .sidebar-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .channel-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .channel-nav a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 14px;
+      padding: 8px 10px;
+      border-radius: var(--radius-btn);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .channel-nav a:hover,
+    .channel-nav a:focus-visible {
+      background: var(--surface-alt);
+      color: var(--primary);
+      outline: none;
+    }
+
+    .channel-nav .count {
+      margin-left: auto;
+      font-size: 12px;
+      color: var(--text-tertiary);
+      background: var(--surface-alt);
+      padding: 1px 7px;
+      border-radius: 10px;
+    }
+
+    .hot-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hot-list li {
+      display: flex;
+      gap: 10px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .hot-rank {
+      font-weight: 800;
+      color: var(--primary-light);
+      font-size: 15px;
+      width: 22px;
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    .hot-rank.top3 {
+      color: var(--primary);
+    }
+
+    .hot-list a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .hot-list a:hover {
+      color: var(--primary);
+    }
+
+    /* 主内容区 */
+    .main-content {
+      min-width: 0;
+    }
+
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 22px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    /* 概览 */
+    .overview-text p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .overview-text strong {
+      color: var(--text-primary);
+    }
+
+    /* 精选卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-default);
+      transition: box-shadow 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      display: block;
+      background: var(--surface-alt);
+    }
+
+    .card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .card-type {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--primary);
+      background: rgba(139, 30, 46, 0.08);
+      padding: 2px 8px;
+      border-radius: var(--radius-tag);
+      align-self: flex-start;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-top: 4px;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      background: var(--surface-alt);
+      padding: 2px 8px;
+      border-radius: var(--radius-tag);
+      white-space: nowrap;
+    }
+
+    /* 最新更新列表 */
+    .update-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-default);
+    }
+
+    .update-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+
+    .update-item:last-child {
+      border-bottom: none;
+    }
+
+    .update-item:hover {
+      background: var(--surface-alt);
+    }
+
+    .update-time {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      width: 80px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+
+    .update-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .update-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    .update-summary {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* 分类入口 */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .category-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-btn);
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.2s;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .category-btn:hover,
+    .category-btn:focus-visible {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      outline: none;
+    }
+
+    .category-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    /* 深度解析 */
+    .deep-dive {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 32px;
+      box-shadow: var(--shadow-default);
+    }
+
+    .deep-dive h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .deep-dive h2::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 22px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .deep-dive h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 28px 0 12px;
+      padding-left: 12px;
+      border-left: 3px solid var(--primary-light);
+    }
+
+    .deep-dive p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-bottom: 14px;
+    }
+
+    .deep-dive ul {
+      margin: 12px 0 16px 24px;
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .deep-dive li {
+      margin-bottom: 6px;
+    }
+
+    .deep-dive .highlight-box {
+      background: var(--surface-alt);
+      border-left: 4px solid var(--primary-light);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius-btn) var(--radius-btn) 0;
+      margin: 16px 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-default);
+    }
+
+    .faq-list details {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-list details:last-child {
+      border-bottom: none;
+    }
+
+    .faq-list summary {
+      padding: 16px 20px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: background 0.15s;
+    }
+
+    .faq-list summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-list summary::after {
+      content: '+';
+      font-size: 20px;
+      color: var(--text-tertiary);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .faq-list details[open] summary::after {
+      content: '−';
+      color: var(--primary);
+    }
+
+    .faq-list summary:hover {
+      background: var(--surface-alt);
+    }
+
+    .faq-list summary:focus-visible {
+      outline: 2px solid var(--primary-light);
+      outline-offset: -2px;
+    }
+
+    .faq-answer {
+      padding: 0 20px 18px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* 用户评论 */
+    .comment-wall {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .comment-card {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 16px 18px;
+      box-shadow: var(--shadow-default);
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .comment-user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .comment-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .comment-name {
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--text-primary);
+    }
+
+    .comment-text {
+      flex: 1;
+    }
+
+    .comment-meta {
+      font-size: 11px;
+      color: var(--text-tertiary);
+    }
+
+    /* 相关资讯 */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-default);
+    }
+
+    .news-item {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: background 0.15s;
+    }
+
+    .news-item:last-child {
+      border-bottom: none;
+    }
+
+    .news-item:hover {
+      background: var(--surface-alt);
+    }
+
+    .news-date {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      width: 80px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+
+    .news-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .news-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .news-summary {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* 相关推荐 */
+    .rec-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .rec-tag {
+      display: inline-block;
+      padding: 8px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .rec-tag:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    /* 补充板块 - 可信度分层 */
+    .credibility-tiers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .tier-card {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 20px;
+      box-shadow: var(--shadow-default);
+      border-top: 4px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .tier-card.tier-a {
+      border-top-color: #2e7d32;
+    }
+
+    .tier-card.tier-b {
+      border-top-color: #f9a825;
+    }
+
+    .tier-card.tier-c {
+      border-top-color: var(--primary-light);
+    }
+
+    .tier-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      letter-spacing: 1px;
+    }
+
+    .tier-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .tier-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .tier-items {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-top: 4px;
+      line-height: 1.7;
+    }
+
+    /* 投稿互动 */
+    .submit-box {
+      background: var(--surface);
+      border: 2px dashed var(--border);
+      border-radius: var(--radius-card);
+      padding: 32px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .submit-box h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .submit-box p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      max-width: 500px;
+    }
+
+    .submit-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 10px 28px;
+      border-radius: var(--radius-btn);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .submit-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    /* 页脚 */
+    .site-footer {
+      background: #1e1a18;
+      color: #b8aea8;
+      padding: 48px 0 32px;
+      margin-top: 32px;
+    }
+
+    .footer-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 36px;
+    }
+
+    .footer-brand {
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .footer-desc {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #9a8e88;
+      max-width: 340px;
+    }
+
+    .footer-col h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #e8ddd8;
+      margin-bottom: 14px;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 13px;
+      color: #9a8e88;
+      text-decoration: none;
+      padding: 3px 0;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #3d3430;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: #7a6f6a;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: background 0.2s, transform 0.2s;
+      z-index: 50;
+    }
+
+    .back-to-top:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .back-to-top.show {
+      display: flex;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-tertiary);
+      font-size: 15px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 1024px) {
+      .three-col-layout {
+        grid-template-columns: 1fr 260px;
+      }
+
+      .sidebar-left {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero {
+        padding: 36px 28px;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .credibility-tiers {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 740px) {
+      .three-col-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+      }
+
+      .header-nav {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .search-box {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+
+      .hero {
+        padding: 28px 20px;
+      }
+
+      .hero-svg {
+        right: 10px;
+        bottom: 10px;
+        width: 120px;
+        height: 120px;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .comment-wall {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .update-item {
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .update-time {
+        width: auto;
+      }
+
+      .news-item {
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .news-date {
+        width: auto;
+      }
+
+      .deep-dive {
+        padding: 20px;
+      }
+
+      .announce-inner {
+        padding: 0 16px;
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+  <!-- 吸顶公告条 -->
+  <div class="announce-bar" id="announce-bar">
+    <div class="announce-inner">
+      <span class="announce-brand">黑料网社</span>
+      <span class="announce-item">
+        <span class="announce-date">2026-11-08</span>
+        <span class="announce-tag">新</span>
+        <span>“疯狂小杨哥”切片带货翻车事件追踪</span>
+      </span>
+      <span class="announce-item">
+        <span class="announce-date">2026-11-07</span>
+        <span class="announce-tag">热</span>
+        <span>网红“猫一杯”巴黎丢作业事件完整时间线</span>
+      </span>
+      <span class="announce-item">
+        <span class="announce-date">2026-11-06</span>
+        <span class="announce-tag">更</span>
+        <span>“东北雨姐”红薯粉条检测报告出炉</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- 吸顶页头 -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a class="logo" href="/#hero" aria-label="黑料网社首页">
+        <svg class="logo-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="2" width="36" height="36" rx="8" stroke="#8b1e2e" stroke-width="2.5" fill="none"/>
+          <path d="M12 14h16M12 20h10M12 26h14" stroke="#8b1e2e" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="28" cy="26" r="3" fill="#b13e4f"/>
+        </svg>
+        <span class="logo-text">黑料网社</span>
+      </a>
+      <nav class="header-nav" aria-label="主题导航">
+        <a href="/#overview">领域概览</a>
+        <a href="/#featured">精选条目</a>
+        <a href="/#updates">最新动态</a>
+        <a href="/#categories">分类索引</a>
+        <a href="/#deep-dive">深度解析</a>
+        <a href="/#faq">常见问答</a>
+        <a href="/#comments">用户评论</a>
+        <a href="/#news">相关资讯</a>
+        <a href="/#recommend">相关推荐</a>
+        <a href="/#credibility">可信度分层</a>
+      </nav>
+      <div class="header-actions">
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="搜索条目…" aria-label="搜索页内条目">
+          <button class="search-btn" id="search-btn" aria-label="搜索">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          </button>
+        </div>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="打开菜单" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 移动端抽屉 -->
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+  <nav class="mobile-drawer" id="mobile-drawer" aria-label="移动端导航">
+    <button class="drawer-close" id="drawer-close" aria-label="关闭菜单">×</button>
+    <div class="drawer-nav">
+      <a href="/#overview">领域概览</a>
+      <a href="/#featured">精选条目</a>
+      <a href="/#updates">最新动态</a>
+      <a href="/#categories">分类索引</a>
+      <a href="/#deep-dive">深度解析</a>
+      <a href="/#faq">常见问答</a>
+      <a href="/#comments">用户评论</a>
+      <a href="/#news">相关资讯</a>
+      <a href="/#recommend">相关推荐</a>
+      <a href="/#credibility">可信度分层</a>
+      <a href="/#submit">投稿互动</a>
+    </div>
+  </nav>
+
+  <!-- 主容器 -->
+  <div class="container">
+    <!-- 首屏 -->
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <h1>黑料网社</h1>
+        <p class="hero-desc">追踪网络争议事件、翻车现场与信息核查。覆盖带货翻车、人设崩塌、短视频摆拍、直播切片争议等具体条目，每条附时间线、各方回应与可信度标注。</p>
+        <div class="hero-tags">
+          <a href="/#featured" class="hero-tag">带货翻车</a>
+          <a href="/#featured" class="hero-tag">人设崩塌</a>
+          <a href="/#featured" class="hero-tag">摆拍争议</a>
+          <a href="/#featured" class="hero-tag">信息核查</a>
+          <a href="/#featured" class="hero-tag">时间线梳理</a>
+        </div>
+      </div>
+      <svg class="hero-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="100" cy="100" r="80" stroke="#fff" stroke-width="1.5" stroke-dasharray="6 6"/>
+        <circle cx="100" cy="100" r="50" stroke="#fff" stroke-width="1" opacity="0.6"/>
+        <path d="M70 70 L130 130 M130 70 L70 130" stroke="#fff" stroke-width="2" opacity="0.5"/>
+        <circle cx="100" cy="100" r="6" fill="#fff" opacity="0.8"/>
+      </svg>
+    </section>
+
+    <!-- 三栏布局 -->
+    <div class="three-col-layout">
+      <!-- 左栏：频道索引 -->
+      <aside class="sidebar sidebar-left" id="channel-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-title">频道索引</div>
+          <nav class="channel-nav" aria-label="频道分类">
+            <a href="/#featured">带货翻车 <span class="count">24</span></a>
+            <a href="/#featured">人设崩塌 <span class="count">18</span></a>
+            <a href="/#featured">摆拍争议 <span class="count">15</span></a>
+            <a href="/#featured">直播切片 <span class="count">12</span></a>
+            <a href="/#featured">数据造假 <span class="count">9</span></a>
+            <a href="/#featured">版权纠纷 <span class="count">7</span></a>
+            <a href="/#featured">品牌解约 <span class="count">6</span></a>
+            <a href="/#featured">平台处罚 <span class="count">11</span></a>
+            <a href="/#featured">舆论反转 <span class="count">14</span></a>
+            <a href="/#featured">账号封禁 <span class="count">8</span></a>
+          </nav>
+        </div>
+        <div class="sidebar-card">
+          <div class="sidebar-title">可信度分层</div>
+          <div style="font-size:12px;color:var(--text-secondary);line-height:1.8;">
+            <p><strong style="color:#2e7d32;">A 级</strong> 官方通报／检测报告</p>
+            <p><strong style="color:#f9a825;">B 级</strong> 多方交叉印证</p>
+            <p><strong style="color:var(--primary-light);">C 级</strong> 单方说法／待核实</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- 中栏主内容 -->
+      <main class="main-content" id="main-content">
+        <!-- 领域概览 -->
+        <section class="section" id="overview">
+          <div class="section-header">
+            <h2 class="section-title">网络争议内容生态概览</h2>
+          </div>
+          <div class="overview-text">
+            <p>网络争议内容已形成一条从爆料、发酵、回应到核查的完整链条。2026年10月至11月，带货翻车类条目占据热度榜首——“疯狂小杨哥”切片带货的“香港美诚月饼”事件在10月28日被合肥市场监管部门立案后，相关切片视频在抖音、快手累计播放量超过<strong>4.2亿次</strong>。同期，“东北雨姐”红薯粉条检测报告于11月6日公布，显示木薯源性成分未检出，但标签标注问题仍被讨论。</p>
+            <p>人设崩塌类内容呈现新特征：当事人回应周期从平均72小时缩短至24小时内，但回应质量参差不齐。11月2日“猫一杯”巴黎丢作业事件中，当事人首次回应视频时长4分12秒，评论区前50条中有31条质疑时间线矛盾。摆拍争议集中在剧情类短视频，平台方在10月共处置摆拍账号<strong>1,247个</strong>，其中粉丝量超百万的账号占6.3%。</p>
+            <p>信息核查环节正在前移。过去网友依赖“等通报”，现在更多账号在事件发生6小时内即发布时间线梳理。以“疯狂小杨哥”事件为例，10月26日第一条质疑视频发布后，3小时内出现12条带“时间线”标签的核查视频，总播放量破千万。这改变了舆论发酵节奏——品牌方回应窗口从48小时压缩到12小时。</p>
+          </div>
+        </section>
+
+        <!-- 精选内容推荐 -->
+        <section class="section" id="featured">
+          <div class="section-header">
+            <h2 class="section-title">精选争议条目</h2>
+            <span class="section-sub">按近30天讨论热度排序</span>
+          </div>
+          <div class="card-grid">
+            <article class="card">
+              <img class="card-img" src="https://picsum.photos/seed/xiaoyangge1/400/300" alt="疯狂小杨哥切片带货月饼事件截图" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <span class="card-type">带货翻车</span>
+                <h3 class="card-title">疯狂小杨哥“香港美诚月饼”事件</h3>
+                <p class="card-desc">10月28日合肥市场监管部门立案调查，涉及“香港品牌”宣传与实际产地不符。切片视频累计播放4.2亿次，三只羊网络尚未公布退赔方案。</p>
+                <div class="card-tags">
+                  <span class="tag">切片带货</span>
+                  <span class="tag">品牌产地</span>
+                  <span class="tag">立案调查</span>
+                </div>
+                <div class="card-meta">
+                  <span>🔥 98.2万</span>
+                  <span>10-28</span>
+                </div>
+              </div>
+            </article>
+            <article class="card">
+              <img class="card-img" src="https://picsum.photos/seed/maoyibei1/400/300" alt="猫一杯巴黎丢作业事件视频画面" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <span class="card-type">摆拍争议</span>
+                <h3 class="card-title">“猫一杯”巴黎丢作业事件</h3>
+                <p class="card-desc">11月2日当事人发布4分12秒回应视频，承认“编造了部分情节”。评论区前50条31条质疑时间线矛盾，涉事账号掉粉12.7万。</p>
+                <div class="card-tags">
+                  <span class="tag">剧情摆拍</span>
+                  <span class="tag">回应视频</span>
+                  <span class="tag">掉粉数据</span>
+                </div>
+                <div class="card-meta">
+                  <span>🔥 76.5万</span>
+                  <span>11-02</span>
+                </div>
+              </div>
+            </article>
+            <article class="card">
+              <img class="card-img" src="https://picsum.photos/seed/yujie1/400/300" alt="东北雨姐红薯粉条检测报告截图" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <span class="card-type">带货翻车</span>
+                <h3 class="card-title">“东北雨姐”红薯粉条检测报告</h3>
+                <p class="card-desc">11月6日公布的检测报告显示木薯源性成分未检出，但包装标签未标注红薯品种与比例。打假博主“大娃”称将申请复检。</p>
+                <div class="card-tags">
+                  <span class="tag">粉条检测</span>
+                  <span class="tag">标签合规</span>
+                  <span class="tag">复检申请</span>
+                </div>
+                <div class="card-meta">
+                  <span>🔥 64.3万</span>
+                  <span>11-06</span>
+                </div>
+              </div>
+            </article>
+            <article class="card">
+              <img class="card-img" src="https://picsum.photos/seed/qixing1/400/300" alt="七老板面膜成分争议直播截图" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <span class="card-type">人设崩塌</span>
+                <h3 class="card-title">“七老板”面膜成分争议</h3>
+                <p class="card-desc">10月30日有用户送检其推荐的面膜，检出未标注的防腐剂成分。品牌方回应称“符合旧版标准”，但产品已下架。</p>
+                <div class="card-tags">
+                  <span class="tag">成分检测</span>
+                  <span class="tag">旧版标准</span>
+                  <span class="tag">产品下架</span>
+                </div>
+                <div class="card-meta">
+                  <span>🔥 51.8万</span>
+                  <span>10-30</span>
+                </div>
+              </div>
+            </article>
+            <article class="card">
+              <img class="card-img" src="https://picsum.photos/seed/dage1/400/300" alt="大哥远直播切片争议画面" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <span class="card-type">平台处罚</span>
+                <h3 class="card-title">“大哥远”直播切片违规被限流</h3>
+                <p class="card-desc">10月25日抖音安全中心公告，其切片账号因“未经授权剪辑直播内容并引导站外交易”被限流30天，涉及账号47个。</p>
+                <div class="card-tags">
+                  <span class="tag">切片授权</span>
+                  <span class="tag">站外交易</span>
+                  <span class="tag">限流30天</span>
+                </div>
+                <div class="card-meta">
+                  <span>🔥 43.1万</span>
+                  <span>10-25</span>
+                </div>
+              </div>
+            </article>
+            <article class="card">
+              <img class="card-img" src="https://picsum.photos/seed/tangren1/400/300" alt="唐人小视频版权纠纷相关画面" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <span class="card-type">版权纠纷</span>
+                <h3 class="card-title">“唐人小视频”背景音乐侵权案</h3>
+                <p class="card-desc">10月22日北京互联网法院一审判决，认定其237条短视频侵权使用音乐，判赔28.6万元。原告为音集协。</p>
+                <div class="card-tags">
+                  <span class="tag">背景音乐</span>
+                  <span class="tag">一审判决</span>
+                  <span class="tag">音集协</span>
+                </div>
+                <div class="card-meta">
+                  <span>🔥 37.5万</span>
+                  <span>10-22</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 最新更新 -->
+        <section class="section" id="updates">
+          <div class="section-header">
+            <h2 class="section-title">最新动态</h2>
+            <span class="section-sub">近48小时更新</span>
+          </div>
+          <div class="update-list">
+            <div class="update-item">
+              <span class="update-time">11-08 14:20</span>
+              <div class="update-content">
+                <div class="update-name">疯狂小杨哥月饼事件</div>
+                <div class="update-summary">合肥市场监管部门通报调查进展：已约谈三只羊网络负责人，要求提供2025年至今的月饼类产品进货台账。</div>
+              </div>
+            </div>
+            <div class="update-item">
+              <span class="update-time">11-08 11:05</span>
+              <div class="update-content">
+                <div class="update-name">猫一杯巴黎丢作业</div>
+                <div class="update-summary">涉事账号在抖音、小红书同步掉粉，第三方数据显示近7天净流失12.7万粉丝，商业合作页面已清空。</div>
+              </div>
+            </div>
+            <div class="update-item">
+              <span class="update-time">11-07 19:40</span>
+              <div class="update-content">
+                <div class="update-name">东北雨姐粉条复检</div>
+                <div class="update-summary">打假博主“大娃”向本溪市市场监管局提交复检申请，要求检测红薯源性成分比例，预计7个工作日出结果。</div>
+              </div>
+            </div>
+            <div class="update-item">
+              <span class="update-time">11-07 15:12</span>
+              <div class="update-content">
+                <div class="update-name">七老板面膜品牌方</div>
+                <div class="update-summary">品牌“肌先知”发布第二份声明，承认涉事批次使用旧版防腐剂标准，承诺对已购用户全额退款。</div>
+              </div>
+            </div>
+            <div class="update-item">
+              <span class="update-time">11-07 09:30</span>
+              <div class="update-content">
+                <div class="update-name">大哥远切片账号限流</div>
+                <div class="update-summary">抖音安全中心更新处置名单，新增12个关联切片账号限流，累计处置账号达59个。</div>
+              </div>
+            </div>
+            <div class="update-item">
+              <span class="update-time">11-06 21:18</span>
+              <div class="update-content">
+                <div class="update-name">唐人小视频版权案</div>
+                <div class="update-summary">被告方“唐人小视频”运营公司表示将上诉，主张部分视频已获授权，涉及金额约8万元争议。</div>
+              </div>
+            </div>
+            <div class="update-item">
+              <span class="update-time">11-06 16:45</span>
+              <div class="update-content">
+                <div class="update-name">“阿纯”性别争议</div>
+                <div class="update-summary">当事人发布身份证照片回应，显示性别为女，此前因声线被质疑“男扮女装”。相关讨论帖在虎扑浏览量破80万。</div>
+              </div>
+            </div>
+            <div class="update-item">
+              <span class="update-time">11-05 10:22</span>
+              <div class="update-content">
+                <div class="update-name">“辛巴”燕窝事件后续</div>
+                <div class="update-summary">河南省消协发布消费提示，提醒消费者关注即食燕窝唾液酸含量标注，未直接点名品牌。</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 分类入口 -->
+        <section class="section" id="categories">
+          <div class="section-header">
+            <h2 class="section-title">按类别筛选</h2>
+            <span class="section-sub">点击筛选精选条目</span>
+          </div>
+          <div class="category-grid" id="category-filter">
+            <button class="category-btn active" data-category="all">全部</button>
+            <button class="category-btn" data-category="带货翻车">带货翻车</button>
+            <button class="category-btn" data-category="人设崩塌">人设崩塌</button>
+            <button class="category-btn" data-category="摆拍争议">摆拍争议</button>
+            <button class="category-btn" data-category="直播切片">直播切片</button>
+            <button class="category-btn" data-category="版权纠纷">版权纠纷</button>
+            <button class="category-btn" data-category="平台处罚">平台处罚</button>
+            <button class="category-btn" data-category="数据造假">数据造假</button>
+          </div>
+        </section>
+
+        <!-- 深度解析 -->
+        <section class="section" id="deep-dive">
+          <div class="deep-dive">
+            <h2>切片带货的责任链为何难以拆解</h2>
+            <p>疯狂小杨哥月饼事件从10月26日发酵到10月28日立案，只用两天。但立案之后的退赔方案，到11月8日仍未公布。切片带货模式中，主播、切片账号、品牌方三方的责任边界，在现有规则下并不清晰。</p>
+
+            <h3>切片账号的授权链条缺失了什么</h3>
+            <p>三只羊网络在2025年公开的切片授权规则中，要求切片账号通过“三只羊网络”公众号提交申请，审核通过后获得电子授权书。但实际操作中，大量切片账号并未走完这个流程。10月29日抖音安全中心公布的数据显示，涉及“疯狂小杨哥”的切片视频中，标注“已授权”的仅占23.7%。缺失的那76.3%，来源大多是录屏后二次剪辑。</p>
+            <div class="highlight-box">
+              <strong>可核对的结构：</strong>一条切片视频从直播流到用户手机，经过录屏→剪辑→上传→算法推荐四个环节。责任认定的难点在于：录屏环节无法追溯录制者身份；剪辑环节可能改变原意（例如只保留“香港品牌”三个字）；上传环节的账号主体与主播无直接合同关系。
+            </div>
+            <p>10月27日，一位拥有47万粉丝的切片账号“小杨哥好物推荐”发布道歉视频，承认“自己录屏剪辑，没有走授权流程”。这条视频播放量320万次，评论区最高赞写道“原来你们也是二道贩子”。授权链条的断裂，让品牌方在追责时找不到直接责任人。</p>
+
+            <h3>品牌方“香港注册、内地生产”的标注惯例</h3>
+            <p>“香港美诚月饼”的商标注册地在香港，生产地在广东佛山。这种操作在食品行业并不罕见。2025年市场监管总局发布的《食品标识监督管理办法（征求意见稿）》曾提出“商标注册地与产地不一致时应显著标注”，但至今未正式实施。目前适用的是2014年版《食品标识管理规定》，仅要求标注“产地”到地级市。</p>
+            <ul>
+              <li>10月29日，佛山市场监管部门对生产方“美诚食品”进行检查，现场未发现违规添加，但产品标签未标注“香港”仅为商标注册地。</li>
+              <li>三只羊网络在10月28日的声明中称“品牌方提供的资质文件齐全”，未回应“香港品牌”宣传是否构成误导。</li>
+              <li>截至11月8日，抖音商城已下架该品牌月饼，但切片视频仍在部分小号传播。</li>
+            </ul>
+
+            <h3>平台处罚与粉丝预期的落差</h3>
+            <p>抖音在10月25日对“大哥远”切片账号的限流处置，依据是《抖音社区自律公约》第4.2条“未经授权剪辑直播内容”。限流30天意味着账号可以正常发布，但不会进入推荐流。一位被限流的切片账号运营者向“新榜”表示，限流期间播放量从日均50万跌到不足2万，“等于断了收入”。</p>
+            <p>但粉丝的预期更高。在“疯狂小杨哥”最新一条视频的评论区，前20条中有14条要求“退一赔三”。北京盈科律师事务所律师张正鑫在10月30日接受《中国消费者报》采访时指出，切片带货中主播是否承担连带责任，取决于其是否“明知或应知”产品问题。目前公开证据尚不足以认定“明知”。</p>
+          </div>
+        </section>
+
+        <!-- 体验指南 -->
+        <section class="section" id="guide">
+          <div class="section-header">
+            <h2 class="section-title">争议内容消费路径</h2>
+            <span class="section-sub">从看到一条爆料到形成判断</span>
+          </div>
+          <div style="background:var(--surface);border-radius:var(--radius-card);padding:28px;box-shadow:var(--shadow-default);">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;">
+              <div>
+                <div style="font-size:12px;font-weight:700;color:var(--primary-light);letter-spacing:1px;margin-bottom:8px;">STEP 1</div>
+                <h3 style="font-size:16px;font-weight:700;margin-bottom:6px;color:var(--text-primary);">先看时间线，不看情绪</h3>
+                <p style="font-size:14px;color:var(--text-secondary);line-height:1.7;">一条爆料出现时，优先搜索“事件名+时间线”。核查类账号通常会在6小时内梳理关键节点。重点看三个时间点：爆料发布时间、当事人首次回应时间、平台或官方介入时间。间隔越短，说明当事人准备越充分或压力越大。</p>
+              </div>
+              <div>
+                <div style="font-size:12px;font-weight:700;color:var(--primary-light);letter-spacing:1px;margin-bottom:8px;">STEP 2</div>
+                <h3 style="font-size:16px;font-weight:700;margin-bottom:6px;color:var(--text-primary);">对照原始素材与切片</h3>
+                <p style="font-size:14px;color:var(--text-secondary);line-height:1.7;">切片视频可能删掉上下文。找到原直播回放或完整视频，对比切片中保留的句子与前后文。例如“香港品牌”在完整直播中是否被解释为“商标注册在香港”，还是直接被当作卖点。这一步骤需要10-15分钟，但能过滤掉大部分断章取义。</p>
+              </div>
+              <div>
+                <div style="font-size:12px;font-weight:700;color:var(--primary-light);letter-spacing:1px;margin-bottom:8px;">STEP 3</div>
+                <h3 style="font-size:16px;font-weight:700;margin-bottom:6px;color:var(--text-primary);">区分事实、回应与推测</h3>
+                <p style="font-size:14px;color:var(--text-secondary);line-height:1.7;">官方通报和检测报告属于事实层，当事人声明属于回应层，网友截图和“据说”属于推测层。消费争议内容时，先确认事实层是否存在。如果只有回应层和推测层，把判断悬置。11月6日东北雨姐粉条事件中，检测报告（事实层）公布后，此前的“木薯冒充红薯”说法（推测层）被推翻。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section" id="faq">
+          <div class="section-header">
+            <h2 class="section-title">常见问答</h2>
+          </div>
+          <div class="faq-list">
+            <details>
+              <summary>切片带货和主播本人带货，责任有什么区别？</summary>
+              <div class="faq-answer">切片账号是独立运营主体，与主播之间通常只有授权关系，没有劳动合同。产品出问题时，消费者可以直接向销售方（切片账号）主张权利。主播是否担责，取决于其是否参与选品、是否从切片销售中分成。目前三只羊网络未公开切片分成的具体比例。</div>
+            </details>
+            <details>
+              <summary>“香港品牌”和“香港生产”在标签上怎么区分？</summary>
+              <div class="faq-answer">看产品包装的“产地”栏。产地标注的是最后完成实质性加工的地址，通常到地级市。商标注册地不强制标注。如果包装上写“香港品牌”但产地标注为“广东佛山”，说明商标在香港注册、产品在内地生产。2026年10月佛山市场监管部门对美诚食品的检查中，确认了这一标注方式合法。</div>
+            </details>
+            <details>
+              <summary>检测报告显示“未检出”就代表没问题吗？</summary>
+              <div class="faq-answer">不一定。检测报告只对送检样品负责。11月6日东北雨姐粉条检测报告显示木薯源性成分未检出，但送检样品由谁提供、是否与消费者购买批次一致，报告未说明。打假博主“大娃”申请复检的理由正是“样品来源存疑”。看检测报告时，先看委托方和样品来源，再看结论。</div>
+            </details>
+            <details>
+              <summary>平台限流和封禁有什么区别？</summary>
+              <div class="faq-answer">限流是账号可以发布内容，但不进入推荐流，粉丝仍可在主页看到更新。封禁是账号无法登录或内容全部下架。抖音对“大哥远”切片账号的处置是限流30天，依据《抖音社区自律公约》第4.2条。限流期间账号的直播权限也被暂停，但历史视频保留。</div>
+            </details>
+            <details>
+              <summary>“猫一杯”巴黎丢作业事件中，摆拍和编造的区别是什么？</summary>
+              <div class="faq-answer">摆拍是预设场景但事件本身真实存在，编造是虚构事件。11月2日“猫一杯”回应视频中承认“编造了部分情节”，包括作业本丢失的具体地点和捡到者的身份。警方通报认定其“虚构事实扰乱公共秩序”。两者的法律后果不同：摆拍主要面临平台处罚，编造可能涉及治安管理处罚。</div>
+            </details>
+            <details>
+              <summary>怎么判断一条“黑料”爆料是否可信？</summary>
+              <div class="faq-answer">看三个要素：是否有原始素材（录屏、截图、文件）、是否有第三方交叉印证（不同账号发布一致信息）、是否有可核实的数字（金额、日期、批次号）。缺少原始素材的爆料，可信度打五折；只有单方说法的，再打五折。10月28日小杨哥月饼事件中，合肥市场监管部门的立案通知属于第三方交叉印证，可信度高于网友截图。</div>
+            </details>
+          </div>
+        </section>
+
+        <!-- 用户评论 -->
+        <section class="section" id="comments">
+          <div class="section-header">
+            <h2 class="section-title">用户评论</h2>
+            <span class="section-sub">来自条目讨论区</span>
+          </div>
+          <div class="comment-wall">
+            <div class="comment-card">
+              <div class="comment-user">
+                <div class="comment-avatar">李</div>
+                <span class="comment-name">李不白</span>
+              </div>
+              <p class="comment-text">小杨哥那个月饼，切片视频里只截了“香港品牌”四个字，完整直播里其实后面跟了一句“商标在香港”。但切片把后半句剪了，这算谁的？</p>
+              <div class="comment-meta">11-08 13:42</div>
+            </div>
+            <div class="comment-card">
+              <div class="comment-user">
+                <div class="comment-avatar">张</div>
+                <span class="comment-name">张鱼小丸子</span>
+              </div>
+              <p class="comment-text">东北雨姐的粉条报告等了快两周，结果是“未检出木薯”，但标签问题还在。所以之前骂她“木薯冒充红薯”的算不算造谣？</p>
+              <div class="comment-meta">11-07 22:15</div>
+            </div>
+            <div class="comment-card">
+              <div class="comment-user">
+                <div class="comment-avatar">王</div>
+                <span class="comment-name">王德发</span>
+              </div>
+              <p class="comment-text">猫一杯那个回应视频，4分12秒，前两分钟都在讲自己多辛苦。评论区翻车不冤。</p>
+              <div class="comment-meta">11-07 18:30</div>
+            </div>
+            <div class="comment-card">
+              <div class="comment-user">
+                <div class="comment-avatar">赵</div>
+                <span class="comment-name">赵四儿</span>
+              </div>
+              <p class="comment-text">七老板面膜那个，品牌方说符合旧版标准。旧版标准是2015年的，现在2026年了，这也能拿来当理由？</p>
+              <div class="comment-meta">11-06 20:08</div>
+            </div>
+            <div class="comment-card">
+              <div class="comment-user">
+                <div class="comment-avatar">陈</div>
+                <span class="comment-name">陈住气</span>
+              </div>
+              <p class="comment-text">切片账号限流30天，等于放假一个月呗。等解封了继续剪，反正粉丝还在。</p>
+              <div class="comment-meta">11-06 15:44</div>
+            </div>
+            <div class="comment-card">
+              <div class="comment-user">
+                <div class="comment-avatar">刘</div>
+                <span class="comment-name">刘能能</span>
+              </div>
+              <p class="comment-text">唐人小视频那个判了28.6万，237条视频，平均一条1200块。音集协这波不亏。</p>
+              <div class="comment-meta">11-05 11:20</div>
+            </div>
+            <div class="comment-card">
+              <div class="comment-user">
+                <div class="comment-avatar">孙</div>
+                <span class="comment-name">孙笑川本川</span>
+              </div>
+              <p class="comment-text">阿纯那个性别争议，人家身份证都晒了，还有人说P图。要不直播去派出所验一下？</p>
+              <div class="comment-meta">11-05 09:15</div>
+            </div>
+            <div class="comment-card">
+              <div class="comment-user">
+                <div class="comment-avatar">周</div>
+                <span class="comment-name">周树人迷弟</span>
+              </div>
+              <p class="comment-text">辛巴燕窝都多少年了还提。河南消协这个提示发得挺巧，正好双十一前。</p>
+              <div class="comment-meta">11-04 21:33</div>
+            </div>
+            <div class="comment-card">
+              <div class="comment-user">
+                <div class="comment-avatar">吴</div>
+                <span class="comment-name">吴彦祖分祖</span>
+              </div>
+              <p class="comment-text">看这些事有个规律：先上热搜，然后当事人回应，然后品牌方发声明，最后等通报。流程比综艺还固定。</p>
+              <div class="comment-meta">11-04 16:50</div>
+            </div>
+            <div class="comment-card">
+              <div class="comment-user">
+                <div class="comment-avatar">郑</div>
+                <span class="comment-name">郑在开心</span>
+              </div>
+              <p class="comment-text">大娃申请复检了，坐等结果。要是复检还是没问题，那之前骂雨姐的博主会道歉吗？大概率不会。</p>
+              <div class="comment-meta">11-03 19:05</div>
+            </div>
+            <div class="comment-card">
+              <div class="comment-user">
+                <div class="comment-avatar">冯</div>
+                <span class="comment-name">冯宝宝</span>
+              </div>
+              <p class="comment-text">猫一杯掉粉12.7万，这数字看着不多，但她的粉丝基数本来就不大，十分之一没了。</p>
+              <div class="comment-meta">11-03 14:22</div>
+            </div>
+            <div class="comment-card">
+              <div class="comment-user">
+                <div class="comment-avatar">褚</div>
+                <span class="comment-name">褚人获</span>
+              </div>
+              <p class="comment-text">三只羊到现在没提退赔，立案调查都十天了。效率呢？</p>
+              <div class="comment-meta">11-02 10:18</div>
+            </div>
+            <div class="comment-card">
+              <div class="comment-user">
+                <div class="comment-avatar">卫</div>
+                <span class="comment-name">卫子夫</span>
+              </div>
+              <p class="comment-text">今天刷到一个切片号还在卖美诚月饼，换个链接继续。平台下架了个寂寞。</p>
+              <div class="comment-meta">11-08 09:30</div>
+            </div>
+            <div class="comment-card">
+              <div class="comment-user">
+                <div class="comment-avatar">蒋</div>
+                <span class="comment-name">蒋道理</span>
+              </div>
+              <p class="comment-text">这篇时间线整理得还行，比那些标题党强。至少把“立案”和“通报”分清楚了。</p>
+              <div class="comment-meta">11-08 08:12</div>
+            </div>
+            <div class="comment-card">
+              <div class="comment-user">
+                <div class="comment-avatar">沈</div>
+                <span class="comment-name">沈万三</span>
+              </div>
+              <p class="comment-text">说个跑题的，双十一预售今晚开始，这些翻车品牌估计要打骨折。</p>
+              <div class="comment-meta">11-08 07:45</div>
+            </div>
+            <div class="comment-card">
+              <div class="comment-user">
+                <div class="comment-avatar">韩</div>
+                <span class="comment-name">韩梅梅</span>
+              </div>
+              <p class="comment-text">深度解析里那句“授权链条断裂”说到点子上了。切片号根本不走授权，因为走了要交钱。</p>
+              <div class="comment-meta">11-07 23:55</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 相关资讯 -->
+        <section class="section" id="news">
+          <div class="section-header">
+            <h2 class="section-title">相关资讯</h2>
+            <span class="section-sub">2026年10月-11月</span>
+          </div>
+          <div class="news-list">
+            <div class="news-item">
+              <span class="news-date">2026-11-08</span>
+              <div class="news-body">
+                <div class="news-title">合肥市场监管约谈三只羊网络 要求提供月饼进货台账</div>
+                <div class="news-summary">11月8日上午的约谈持续两小时，监管部门要求企业在11月12日前提交2025年1月至今的月饼类产品进货凭证和供应商资质文件。</div>
+              </div>
+            </div>
+            <div class="news-item">
+              <span class="news-date">2026-11-07</span>
+              <div class="news-body">
+                <div class="news-title">抖音更新切片带货处置名单 新增12个账号限流</div>
+                <div class="news-summary">抖音安全中心11月7日发布第18期处置公告，本轮涉及“大哥远”关联切片账号12个，累计处置账号达59个，限流期统一为30天。</div>
+              </div>
+            </div>
+            <div class="news-item">
+              <span class="news-date">2026-11-06</span>
+              <div class="news-body">
+                <div class="news-title">东北雨姐粉条检测报告公布 木薯源性成分未检出</div>
+                <div class="news-summary">辽宁省某检测机构出具的报告中，送检样品生产批次为2026-09-15，检测项目包括红薯源性成分、木薯源性成分和铝残留，其中木薯源性成分检测限为0.1%。</div>
+              </div>
+            </div>
+            <div class="news-item">
+              <span class="news-date">2026-11-02</span>
+              <div class="news-body">
+                <div class="news-title">“猫一杯”回应巴黎丢作业事件 承认编造部分情节</div>
+                <div class="news-summary">在4分12秒的回应视频中，当事人称“作业本丢失的具体地点和捡到者身份是编造的”，但未说明编造动机。警方通报认定其虚构事实扰乱公共秩序。</div>
+              </div>
+            </div>
+            <div class="news-item">
+              <span class="news-date">2026-10-28</span>
+              <div class="news-body">
+                <div class="news-title">合肥市场监管立案调查“香港美诚月饼”</div>
+                <div class="news-summary">立案通知书显示，调查方向为“涉嫌虚假宣传”，依据《反不正当竞争法》第八条。三只羊网络在当日声明中称“将积极配合调查”。</div>
+              </div>
+            </div>
+            <div class="news-item">
+              <span class="news-date">2026-10-22</span>
+              <div class="news-body">
+                <div class="news-title">“唐人小视频”背景音乐侵权案一审宣判 判赔28.6万元</div>
+                <div class="news-summary">北京互联网法院认定237条短视频侵权使用音集协管理的音乐作品，单条判赔约1200元。被告方表示将上诉，争议金额约8万元。</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 相关推荐 -->
+        <section class="section" id="recommend">
+          <div class="section-header">
+            <h2 class="section-title">相关推荐</h2>
+            <span class="section-sub">按内容方向索引</span>
+          </div>
+          <div class="rec-tags">
+            <a href="/#featured" class="rec-tag">切片带货授权规则</a>
+            <a href="/#featured" class="rec-tag">食品标签产地标注</a>
+            <a href="/#featured" class="rec-tag">直播切片限流申诉</a>
+            <a href="/#featured" class="rec-tag">打假博主送检流程</a>
+            <a href="/#featured" class="rec-tag">人设崩塌回应模板</a>
+            <a href="/#featured" class="rec-tag">摆拍视频平台处罚</a>
+            <a href="/#featured" class="rec-tag">MCN机构责任划分</a>
+            <a href="/#featured" class="rec-tag">品牌方解约时间线</a>
+          </div>
+        </section>
+
+        <!-- 补充板块：可信度分层 -->
+        <section class="section" id="credibility">
+          <div class="section-header">
+            <h2 class="section-title">条目可信度分层</h2>
+            <span class="section-sub">按信息来源与交叉印证程度</span>
+          </div>
+          <div class="credibility-tiers">
+            <div class="tier-card tier-a">
+              <span class="tier-label">A 级 · 已核实</span>
+              <span class="tier-name">官方通报／检测报告</span>
+              <span class="tier-desc">有监管部门立案通知、行政处罚决定书或第三方检测机构盖章报告支撑。</span>
+              <span class="tier-items">代表条目：合肥市场监管对美诚月饼立案通知（10-28）；东北雨姐粉条检测报告（11-06）</span>
+            </div>
+            <div class="tier-card tier-b">
+              <span class="tier-label">B 级 · 交叉印证</span>
+              <span class="tier-name">多方独立信源一致</span>
+              <span class="tier-desc">至少两个互不关联的账号或媒体发布一致信息，含具体数字、时间或文件截图。</span>
+              <span class="tier-items">代表条目：猫一杯掉粉12.7万（第三方数据平台）；大哥远切片账号限流名单（抖音公告）</span>
+            </div>
+            <div class="tier-card tier-c">
+              <span class="tier-label">C 级 · 待核实</span>
+              <span class="tier-name">单方说法／网友截图</span>
+              <span class="tier-desc">仅有当事人声明、匿名爆料或单张截图，缺少原始素材或第三方印证。</span>
+              <span class="tier-items">代表条目：七老板面膜“旧版标准”说法（品牌方单方声明）；阿纯性别争议（当事人晒证后仍有质疑）</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 投稿互动 -->
+        <section class="section" id="submit">
+          <div class="submit-box">
+            <h3>有新的争议条目线索？</h3>
+            <p>提供具体条目名称、发生时间、原始素材链接（录屏／截图／文件），经交叉印证后纳入时间线。优先处理带可核实数字的线索。</p>
+            <a href="/#submit" class="submit-btn">提交线索</a>
+          </div>
+        </section>
+      </main>
+
+      <!-- 右栏：辅助栏 -->
+      <aside class="sidebar" id="aux-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-title">热榜条目</div>
+          <ol class="hot-list">
+            <li><span class="hot-rank top3">1</span><a href="/#featured">疯狂小杨哥月饼事件</a></li>
+            <li><span class="hot-rank top3">2</span><a href="/#featured">猫一杯巴黎丢作业</a></li>
+            <li><span class="hot-rank top3">3</span><a href="/#featured">东北雨姐粉条复检</a></li>
+            <li><span class="hot-rank">4</span><a href="/#featured">七老板面膜成分争议</a></li>
+            <li><span class="hot-rank">5</span><a href="/#featured">大哥远切片限流</a></li>
+            <li><span class="hot-rank">6</span><a href="/#featured">唐人小视频版权案</a></li>
+            <li><span class="hot-rank">7</span><a href="/#featured">阿纯性别争议</a></li>
+            <li><span class="hot-rank">8</span><a href="/#featured">辛巴燕窝旧事重提</a></li>
+          </ol>
+        </div>
+        <div class="sidebar-card">
+          <div class="sidebar-title">最近更新</div>
+          <div style="font-size:12px;color:var(--text-secondary);line-height:1.9;">
+            <p><strong>11-08</strong> 合肥约谈三只羊</p>
+            <p><strong>11-08</strong> 猫一杯掉粉数据更新</p>
+            <p><strong>11-07</strong> 大娃申请粉条复检</p>
+            <p><strong>11-07</strong> 肌先知承诺全额退款</p>
+            <p><strong>11-06</strong> 唐人小视频表示上诉</p>
+          </div>
+        </div>
+        <div class="sidebar-card">
+          <div class="sidebar-title">可信度提示</div>
+          <p style="font-size:12px;color:var(--text-secondary);line-height:1.7;">条目可信度标注基于公开可查信息。A级有官方文件支撑，B级有多方交叉印证，C级为单方说法。标注随新信息更新。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">黑料网社</div>
+          <p class="footer-desc">覆盖2026年10月至11月的网络争议条目，包括带货翻车、人设崩塌、摆拍争议、版权纠纷等类型。每条附时间线与信源层级，更新节奏为每日1-3条。</p>
+        </div>
+        <div class="footer-col">
+          <h4>内容分类</h4>
+          <a href="/#featured">带货翻车</a>
+          <a href="/#featured">人设崩塌</a>
+          <a href="/#featured">摆拍争议</a>
+          <a href="/#featured">直播切片</a>
+          <a href="/#featured">版权纠纷</a>
+        </div>
+        <div class="footer-col">
+          <h4>信息层级</h4>
+          <a href="/#credibility">A级 · 已核实</a>
+          <a href="/#credibility">B级 · 交叉印证</a>
+          <a href="/#credibility">C级 · 待核实</a>
+          <a href="/#news">相关资讯</a>
+        </div>
+        <div class="footer-col">
+          <h4>互动</h4>
+          <a href="/#submit">提交线索</a>
+          <a href="/#comments">用户评论</a>
+          <a href="/#faq">常见问答</a>
+          <a href="/#deep-dive">深度解析</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>页面内容为示例条目，日期基于2026年11月8日。所有条目名称、数据、评论均为演示用途。</span>
+        <span>© 2026 黑料网社 · 内容聚合示例</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="回到顶部">↑</button>
+
+  <script>
+    (function() {
+      // 移动端抽屉
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const drawer = document.getElementById('mobile-drawer');
+      const overlay = document.getElementById('drawer-overlay');
+      const closeBtn = document.getElementById('drawer-close');
+      const drawerLinks = drawer.querySelectorAll('a');
+
+      function openDrawer() {
+        drawer.classList.add('open');
+        overlay.classList.add('active');
+        menuBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeDrawer() {
+        drawer.classList.remove('open');
+        overlay.classList.remove('active');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      menuBtn.addEventListener('click', openDrawer);
+      closeBtn.addEventListener('click', closeDrawer);
+      overlay.addEventListener('click', closeDrawer);
+      drawerLinks.forEach(link => link.addEventListener('click', closeDrawer));
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && drawer.classList.contains('open')) {
+          closeDrawer();
+        }
+      });
+
+      // 回到顶部
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > window.innerHeight) {
+          backToTop.classList.add('show');
+        } else {
+          backToTop.classList.remove('show');
+        }
+      });
+      backToTop.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // 分类筛选
+      const categoryButtons = document.querySelectorAll('#category-filter .category-btn');
+      const featuredCards = document.querySelectorAll('#featured .card');
+      const noResults = document.createElement('div');
+      noResults.className = 'no-results';
+      noResults.textContent = '该分类下暂无条目，试试其他类别。';
+      noResults.style.display = 'none';
+      document.querySelector('#featured .card-grid').after(noResults);
+
+      categoryButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          categoryButtons.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          const category = this.dataset.category;
+          let visibleCount = 0;
+
+          featuredCards.forEach(card => {
+            const typeEl = card.querySelector('.card-type');
+            const cardCategory = typeEl ? typeEl.textContent.trim() : '';
+            if (category === 'all' || cardCategory === category) {
+              card.style.display = '';
+              visibleCount++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        });
+      });
+
+      // 搜索框本地筛选（针对精选卡片标题和描述）
+      const searchInput = document.getElementById('search-input');
+      const searchBtn = document.getElementById('search-btn');
+
+      function performSearch() {
+        const query = searchInput.value.trim().toLowerCase();
+        if (!query) {
+          featuredCards.forEach(card => card.style.display = '');
+          noResults.style.display = 'none';
+          categoryButtons.forEach(b => b.classList.remove('active'));
+          document.querySelector('#category-filter .category-btn[data-category="all"]').classList.add('active');
+          return;
+        }
+
+        let visibleCount = 0;
+        featuredCards.forEach(card => {
+          const title = card.querySelector('.card-title')?.textContent.toLowerCase() || '';
+          const desc = card.querySelector('.card-desc')?.textContent.toLowerCase() || '';
+          const tags = Array.from(card.querySelectorAll('.tag')).map(t => t.textContent.toLowerCase()).join(' ');
+          if (title.includes(query) || desc.includes(query) || tags.includes(query)) {
+            card.style.display = '';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        categoryButtons.forEach(b => b.classList.remove('active'));
+      }
+
+      if (searchBtn) {
+        searchBtn.addEventListener('click', performSearch);
+      }
+      if (searchInput) {
+        searchInput.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter') {
+            performSearch();
+          }
+        });
+      }
+    })();
+  </script>
+
+  <!-- 结构化数据 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "黑料网社",
+    "description": "聚焦网络争议内容、翻车事件与信息核查的垂直聚合站。汇集近30天热搜条目、网友讨论、时间线与可信度判断。",
+    "inLanguage": "zh-CN"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "切片带货和主播本人带货，责任有什么区别？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "切片账号是独立运营主体，与主播之间通常只有授权关系，没有劳动合同。产品出问题时，消费者可以直接向销售方（切片账号）主张权利。主播是否担责，取决于其是否参与选品、是否从切片销售中分成。目前三只羊网络未公开切片分成的具体比例。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "“香港品牌”和“香港生产”在标签上怎么区分？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "看产品包装的“产地”栏。产地标注的是最后完成实质性加工的地址，通常到地级市。商标注册地不强制标注。如果包装上写“香港品牌”但产地标注为“广东佛山”，说明商标在香港注册、产品在内地生产。2026年10月佛山市场监管部门对美诚食品的检查中，确认了这一标注方式合法。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "检测报告显示“未检出”就代表没问题吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不一定。检测报告只对送检样品负责。11月6日东北雨姐粉条检测报告显示木薯源性成分未检出，但送检样品由谁提供、是否与消费者购买批次一致，报告未说明。打假博主“大娃”申请复检的理由正是“样品来源存疑”。看检测报告时，先看委托方和样品来源，再看结论。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "平台限流和封禁有什么区别？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "限流是账号可以发布内容，但不进入推荐流，粉丝仍可在主页看到更新。封禁是账号无法登录或内容全部下架。抖音对“大哥远”切片账号的处置是限流30天，依据《抖音社区自律公约》第4.2条。限流期间账号的直播权限也被暂停，但历史视频保留。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "“猫一杯”巴黎丢作业事件中，摆拍和编造的区别是什么？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "摆拍是预设场景但事件本身真实存在，编造是虚构事件。11月2日“猫一杯”回应视频中承认“编造了部分情节”，包括作业本丢失的具体地点和捡到者的身份。警方通报认定其“虚构事实扰乱公共秩序”。两者的法律后果不同：摆拍主要面临平台处罚，编造可能涉及治安管理处罚。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "怎么判断一条“黑料”爆料是否可信？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "看三个要素：是否有原始素材（录屏、截图、文件）、是否有第三方交叉印证（不同账号发布一致信息）、是否有可核实的数字（金额、日期、批次号）。缺少原始素材的爆料，可信度打五折；只有单方说法的，再打五折。10月28日小杨哥月饼事件中，合肥市场监管部门的立案通知属于第三方交叉印证，可信度高于网友截图。"
+        }
+      }
+    ]
+  }
+  </script>
+</body>
+                                  </html>
